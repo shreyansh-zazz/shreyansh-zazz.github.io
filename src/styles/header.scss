@@ -1,0 +1,182 @@
+.header {
+  position: sticky;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  height: 42px;
+  background-color: $secondaryColor;
+  font-size: 1.2em;
+  color: $primaryColor;
+  z-index: 9;
+
+  .link {
+    color: $primaryColor;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      font-weight: 600;
+    }
+  }
+
+  .icon-link {
+    color: $primaryColor;
+    cursor: pointer;
+    font-size: 1.3em;
+  }
+
+  .separator {
+    margin: 0 0.6rem;
+  }
+
+  @media (max-width: 780px) {
+    flex-wrap: wrap;
+    height: auto;
+  }
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  padding: 0 1.2rem;
+  text-transform: lowercase;
+}
+
+.useful-links {
+  display: flex;
+  align-items: center;
+}
+
+.pref-links {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 1.2rem;
+
+  .pref-link-wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 780px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.6rem;
+
+    .pref-link-wrap {
+      order: 1;
+    }
+
+    .search-bar {
+      order: 2;
+      width: 100%;
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.search-bar {
+  align-self: stretch;
+  position: relative;
+  margin: 0 0.6rem;
+
+  input {
+    height: 100%;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    padding-left: 0.4rem;
+    padding-right: 32px;
+    color: #ffffff;
+    border: 0;
+    background-color: rgba(255,255,255,0.12);
+    z-index: 1;
+  }
+
+  .search-btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    z-index: 9;
+    color: rgba(255,255,255,0.56);
+  }
+}
+
+.connect {
+  position: relative;
+  cursor: pointer;
+
+  .connect-link-wrap {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+    margin-left: -1.2rem;
+    padding-top: 1rem;
+
+    .connect-links {
+      display: flex;
+      flex-direction: column;
+      padding: 0.8em 0;
+      color: $secondaryColor;
+      background: $primaryColor;
+      border-radius: 4px;
+      border: 1px solid #D8E3E9;
+      box-shadow: 12px 12px #D8E3E9;
+    }
+
+    .connect-link {
+      display: flex;
+      align-items: center;
+      min-width: 180px;
+      width: 180px;
+      max-width: 180px;
+      margin: 0.4rem 0;
+      padding: 0.2rem 1rem;
+      font-weight: 400;
+      color: $secondaryColor;
+      text-decoration: none;
+
+      &:hover { 
+        text-decoration: underline;
+
+        &.github, &.github > .handler {
+          color: #161616
+        }
+
+        &.dribbble, &.dribbble > .handler {
+          color: rgb(189, 34, 94);
+        }
+
+        &.pinterest, &.pinterest > .handler {
+          color: rgb(197, 31, 38);
+        }
+
+        &.twitter, &.twitter > .handler {
+          color: rgb(0, 167, 231);
+        }
+
+        &.linkedin, &.linkedin > .handler {
+          color: rgb(0, 118, 179);
+        }
+      }
+
+      .icon {
+        font-size: 1.4em;
+      }
+
+      .handler {
+        margin-left: 0.4rem;
+        color: $secondaryColor;
+      }
+    }
+  }
+}
