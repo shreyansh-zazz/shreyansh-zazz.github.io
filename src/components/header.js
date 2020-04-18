@@ -20,7 +20,7 @@ class Header extends React.Component {
     this.toggleShowConnectLinks = this.toggleShowConnectLinks.bind(this)
   }
 
-  toggleShowConnectLinks() {
+  toggleShowConnectLinks(e) {
     this.setState((state) => ({
       showConnectLinks: !state.showConnectLinks,
     }))
@@ -60,6 +60,7 @@ class Header extends React.Component {
             </Link>
             <div className="separator">|</div>
             <div
+              role="navigation"
               className={
                 this.state.showConnectLinks ? "connect active" : "connect"
               }

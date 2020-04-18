@@ -3,14 +3,11 @@ import classNames from "classnames"
 import { Link } from "gatsby"
 
 class Block extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const node = this.props.node
     const title = node.frontmatter.title || node.fields.slug
     const type = node.frontmatter.type
+    const tags = node.frontmatter.tags
     return (
       <article
         className={classNames({
@@ -28,7 +25,8 @@ class Block extends React.Component {
           <div className="content">
             <Link to={`/${type.toLowerCase()}/`} className="meta">
               {type}
-            </Link>
+            </Link>{" "}
+            <i>{tags}</i>
             <div className="title">
               <Link to={node.fields.slug} className="heading">
                 {title}

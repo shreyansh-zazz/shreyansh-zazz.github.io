@@ -5,10 +5,6 @@ import "../styles/index.scss"
 import Block from "../components/block"
 
 class Bytes extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const posts = this.props.data.allMarkdownRemark.edges

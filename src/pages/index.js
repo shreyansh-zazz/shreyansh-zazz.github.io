@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -7,10 +7,6 @@ import "../styles/index.scss"
 import Block from "../components/block"
 
 class Index extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const posts = this.props.data.allMarkdownRemark.edges
@@ -47,6 +43,7 @@ export const pageQuery = graphql`
             title
             description
             type
+            tags
           }
         }
       }
