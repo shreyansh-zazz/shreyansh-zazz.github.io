@@ -55,7 +55,7 @@ class Header extends React.Component {
             </div>
           </div>
           <div className="pref-link-wrap">
-            <Link to="/bits/" className="link" activeClassName="active">
+            <Link to="/about/" className="link" activeClassName="active">
               About
             </Link>
             <div className="separator">|</div>
