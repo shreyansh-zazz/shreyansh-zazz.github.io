@@ -1,12 +1,10 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import "../styles/index.scss"
 import Block from "../components/block"
 
-class Index extends React.Component {
+class Books extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -19,14 +17,13 @@ class Index extends React.Component {
       <Layout location={location} title={siteTitle}>
         <SEO title="Root" />
         {posts.map(({ node }) => {
-          return <Block node={node}></Block>
+          const type = node.frontmatter.type
+          return type.includes("books") ? <Block node={node}></Block> : null
         })}
       </Layout>
     )
   }
 }
-
-export default Index
 
 export const pageQuery = graphql`
   query {
@@ -53,3 +50,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default Books
