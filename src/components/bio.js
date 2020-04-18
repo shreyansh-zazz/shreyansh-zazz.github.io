@@ -34,7 +34,7 @@ const Bio = () => {
   return (
     <div
       style={{
-        display: `flex`
+        display: `flex`,
       }}
     >
       <Image

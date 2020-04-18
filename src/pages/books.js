@@ -4,7 +4,7 @@ import SEO from "../components/seo"
 import "../styles/index.scss"
 import Block from "../components/block"
 
-class Bits extends React.Component {
+class Books extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -18,7 +18,7 @@ class Bits extends React.Component {
         <SEO title="Root" />
         {posts.map(({ node }) => {
           const type = node.frontmatter.type
-          return type.includes("bits") ? <Block node={node}></Block> : null
+          return type.includes("books") ? <Block node={node}></Block> : null
         })}
       </Layout>
     )
@@ -51,4 +51,4 @@ export const pageQuery = graphql`
   }
 `
 
-export default Bits
+export default Books
