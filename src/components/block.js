@@ -1,21 +1,36 @@
 import React from "react"
-import classNames from "classnames"
 import { Link } from "gatsby"
 
-class Block extends React.Component {
+export default class Block extends React.Component {
+  node
+
+  constructor(props) {
+    super(props)
+
+    this.node = props.node
+  }
+
+  getTypeColorClass() {
+    switch (this.node.frontmatter.type) {
+      case "bits":
+        return "bits"
+      case "bytes":
+        return "bytes"
+      case "books":
+        return "books"
+      default:
+        return null
+    }
+  }
+
   render() {
-    const node = this.props.node
+    const node = this.node
     const title = node.frontmatter.title || node.fields.slug
     const type = node.frontmatter.type
     const tags = node.frontmatter.tags
     return (
       <article
-        className={classNames({
-          block: true,
-          bits: type.includes("bits"),
-          bytes: type.includes("bytes"),
-          books: type.includes("books"),
-        })}
+        className={["block", this.getTypeColorClass()].join(" ")}
         key={node.fields.slug}
       >
         <div className="block-content">
@@ -47,5 +62,3 @@ class Block extends React.Component {
     )
   }
 }
-
-export default Block

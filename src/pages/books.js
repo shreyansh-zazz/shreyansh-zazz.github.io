@@ -4,7 +4,7 @@ import SEO from "../components/seo"
 import "../styles/index.scss"
 import Block from "../components/block"
 
-class Books extends React.Component {
+export default class Books extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const posts = this.props.data.allMarkdownRemark.edges
@@ -46,5 +46,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-export default Books

@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa"
 import { Link } from "gatsby"
 
-class Header extends React.Component {
+export default class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -45,6 +45,10 @@ class Header extends React.Component {
           <div className="separator">|</div>
           <Link to="/books/" className="link" activeClassName="active">
             Books
+          </Link>
+          <div className="separator">|</div>
+          <Link to="/tags/" className="link" activeClassName="active">
+            Tags
           </Link>
         </div>
         <div className="pref-links">
@@ -128,5 +132,3 @@ class Header extends React.Component {
     )
   }
 }
-
-export default Header

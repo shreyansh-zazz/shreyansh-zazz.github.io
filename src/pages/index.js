@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import "../styles/index.scss"
 import Block from "../components/block"
 
-class Index extends React.Component {
+export default class Index extends React.Component {
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const posts = this.props.data.allMarkdownRemark.edges
@@ -21,8 +21,6 @@ class Index extends React.Component {
     )
   }
 }
-
-export default Index
 
 export const pageQuery = graphql`
   query {
