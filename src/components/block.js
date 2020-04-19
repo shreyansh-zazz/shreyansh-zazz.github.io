@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import "../styles/components/block.scss";
+
 export default class Block extends React.Component {
   node
 

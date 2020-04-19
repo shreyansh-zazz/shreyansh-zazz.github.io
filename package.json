@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "notesss",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Yet another blog on tech",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Shreyansh Zazz <shrey.binary@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/shreyansh-zazz/shreyansh-zazz.github.io/issues"
   },
   "dependencies": {
     "gatsby": "^2.20.12",
@@ -36,7 +36,7 @@
     "gh-pages": "^2.2.0",
     "prettier": "^2.0.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://github.com/shreyansh-zazz/shreyansh-zazz.github.io#readme",
   "keywords": [
     "gatsby"
   ],
@@ -44,7 +44,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/shreyansh-zazz/shreyansh-zazz.github.io.git"
   },
   "scripts": {
     "build": "gatsby build",

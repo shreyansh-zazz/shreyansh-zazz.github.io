@@ -10,6 +10,8 @@ import {
 } from "react-icons/fa"
 import { Link } from "gatsby"
 
+import "../styles/components/header.scss"
+
 export default class Header extends React.Component {
   constructor(props) {
     super(props)

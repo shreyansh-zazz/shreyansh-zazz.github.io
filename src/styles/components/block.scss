@@ -1,0 +1,74 @@
+@import "../__basics/vars.scss";
+
+.block {
+  margin: 2rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &.bits {
+    .meta {
+      color: #1758B9;
+    }
+  }
+
+  &.bytes {
+    .meta {
+      color: #11CA3A;
+    }
+  }
+
+  &.books {
+    .meta {
+      color: #DCA312;
+    }
+  }
+
+  .block-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: baseline;
+
+    .date {
+      color: $metaText;
+    }
+    
+    .date, .meta {
+      font-size: 1.2em;
+      font-weight: 600;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .content {
+      padding-left: 1.8rem;
+
+      .meta {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .title {
+        padding-top: 1rem;
+
+        .heading {
+          font-size: 1.3em;
+          color: #000000;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        .description {
+          padding-top: 0.4rem;
+          font-size: 1em;
+          color: $metaText;
+        }
+      }
+    }
+  }
+}
