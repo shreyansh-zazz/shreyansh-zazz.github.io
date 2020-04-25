@@ -1,20 +1,15 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
+const BlogPostTemplate = ({ data, pageContext }) => {
+  const post = data.allStrapiBlock.edges[0].node
   const { previous, next } = pageContext
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
+    <div>
+      <SEO title={post.title} description={post.description} />
       <article>
         <header>
           <h1
@@ -22,17 +17,17 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               marginBottom: 0,
             }}
           >
-            {post.frontmatter.title}
+            {post.title}
           </h1>
           <p
             style={{
               display: `block`,
             }}
           >
-            {post.frontmatter.date}
+            {post.created_at}
           </p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <section dangerouslySetInnerHTML={{ __html: post.content }} />
         <hr />
       </article>
 
@@ -48,21 +43,21 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+              <Link to={previous.category + "/" + previous.slug} rel="prev">
+                ← {previous.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+              <Link to={next.category + "/" + next.slug} rel="next">
+                {next.title} →
               </Link>
             )}
           </li>
         </ul>
       </nav>
-    </Layout>
+    </div>
   )
 }
 
@@ -75,14 +70,23 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
+
+    allStrapiBlock(filter: { slug: { eq: $slug } }) {
+      edges {
+        node {
+          id
+          UID
+          title
+          description
+          category
+          tags {
+            id
+            name
+          }
+          content
+          slug
+          created_at
+        }
       }
     }
   }

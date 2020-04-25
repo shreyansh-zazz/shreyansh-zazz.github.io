@@ -1,19 +1,21 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import "../styles/components/block.scss";
+import "../styles/components/block.scss"
 
 export default class Block extends React.Component {
   node
+  index
 
   constructor(props) {
     super(props)
 
     this.node = props.node
+    this.index = props.index
   }
 
   getTypeColorClass() {
-    switch (this.node.frontmatter.type) {
+    switch (this.node.category) {
       case "bits":
         return "bits"
       case "bytes":
@@ -26,41 +28,52 @@ export default class Block extends React.Component {
   }
 
   render() {
-    const node = this.node
-    const title = node.frontmatter.title || node.fields.slug
-    const type = node.frontmatter.type
-    const tags = node.frontmatter.tags
     return (
-      <article
-        className={["block", this.getTypeColorClass()].join(" ")}
-        key={node.fields.slug}
-      >
-        <div className="block-content">
-          <div className="date">
-            <small>{node.frontmatter.date}</small>
-          </div>
-          <div className="content">
-            <Link to={`/${type.toLowerCase()}/`} className="meta">
-              {type}
-            </Link>{" "}
-            <i>{tags}</i>
-            <div className="title">
-              <Link to={node.fields.slug} className="heading">
-                {title}
-              </Link>
-              {type.includes("bits") ? (
-                <div className="description">
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt,
-                    }}
-                  />
-                </div>
-              ) : null}
-            </div>
-          </div>
+      <div className="block">
+        <div className="sn">{this.index}.</div>
+        <div className="content">
+          <Link
+            className="title"
+            to={this.node.category + "/" + this.node.slug}
+          >
+            {this.node.title}
+          </Link>
+          <p
+            className="desc"
+            dangerouslySetInnerHTML={{ __html: this.node.description }}
+          ></p>
+          <p className="meta">
+            <Link
+              className={"category " + this.getTypeColorClass()}
+              to={this.node.category + "/" + this.node.slug}
+            >
+              {this.node.category}
+            </Link>
+            &nbsp;|&nbsp;
+            {this.node.tags?.map(({ name }, i) => {
+              var linkTag = (
+                <span>
+                  ,&nbsp;
+                  <Link className="tag" to={"tags/" + name}>
+                    {name}
+                  </Link>
+                </span>
+              )
+              if (!i)
+                linkTag = (
+                  <span>
+                    <Link className="tag" to={"tags/" + name}>
+                      {name}
+                    </Link>
+                  </span>
+                )
+              return linkTag
+            })}
+            &nbsp;|&nbsp;
+            {this.node.created_at}
+          </p>
         </div>
-      </article>
+      </div>
     )
   }
 }

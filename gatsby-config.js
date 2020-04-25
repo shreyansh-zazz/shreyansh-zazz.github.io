@@ -9,6 +9,12 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout`),
+      },
+    },
     "gatsby-plugin-sass",
     {
       resolve: `gatsby-source-filesystem`,
@@ -27,9 +33,9 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://localhost:1337`,
+        apiURL: `https://notesss-cms.herokuapp.com`,
         queryLimit: 1000, // Default to 100
-        contentTypes: [`block`],
+        contentTypes: [`block`, `tags`],
       },
     },
     {

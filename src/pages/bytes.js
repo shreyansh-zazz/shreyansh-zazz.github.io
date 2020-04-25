@@ -1,22 +1,22 @@
 import React from "react"
-import Layout from "../components/layout"
+
 import SEO from "../components/seo"
 import "../styles/index.scss"
 import Block from "../components/block"
 
 export default class Bytes extends React.Component {
   render() {
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const posts = this.props.data.allMarkdownRemark.edges
-    const location = this.props.location
+    const posts = this.props.data.allStrapiBlock.edges
     return (
-      <Layout location={location} title={siteTitle}>
+      <div>
         <SEO title="Root" />
-        {posts.map(({ node }) => {
-          const type = node.frontmatter.type
-          return type.includes("bytes") ? <Block node={node}></Block> : null
+        {posts.map(({ node }, i) => {
+          const type = node.category
+          return type.includes("bytes") ? (
+            <Block node={node} index={i}></Block>
+          ) : null
         })}
-      </Layout>
+      </div>
     )
   }
 }
@@ -28,19 +28,22 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allStrapiBlock(
+      sort: { fields: [created_at], order: DESC }
+      filter: { category: { eq: "bytes" } }
+    ) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
+          title
+          description
+          content
+          category
+          tags {
+            name
           }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            type
-          }
+          updated_at
+          created_at(formatString: "MMMM DD, YYYY")
+          slug
         }
       }
     }

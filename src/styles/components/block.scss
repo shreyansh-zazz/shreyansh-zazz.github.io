@@ -1,74 +1,62 @@
 @import "../__basics/vars.scss";
 
 .block {
-  margin: 2rem 0;
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid $gray02;
 
   &:first-child {
-    margin-top: 0;
+    padding: 0;
+    padding-bottom: 0.8rem;
   }
 
-  &.bits {
-    .meta {
-      color: #1758B9;
+  .content {
+    padding-left: 1.2rem;
+  }
+
+  .title {
+    display: inline-block;
+    margin-bottom: 0.4rem;
+  }
+
+  .sn, .title {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: $textColor01;
+  }
+
+  .title, .category, .tag {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 
-  &.bytes {
-    .meta {
-      color: #11CA3A;
-    }
+  .meta, .tag, .desc {
+    color: $textColor02;
+    font-size: 1em;
   }
 
-  &.books {
-    .meta {
-      color: #DCA312;
-    }
+  .meta {
+    margin-top: 0.6rem;
   }
 
-  .block-content {
-    display: flex;
-    align-items: flex-start;
-    justify-content: baseline;
+  .category {
+    font-weight: 700;
 
-    .date {
-      color: $metaText;
+    &.bits {
+      color: $bitsColor;
     }
     
-    .date, .meta {
-      font-size: 1.2em;
-      font-weight: 600;
-      white-space: nowrap;
-      text-decoration: none;
+    &.bytes {
+      color: $bytesColor;
     }
-
-    .content {
-      padding-left: 1.8rem;
-
-      .meta {
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-
-      .title {
-        padding-top: 1rem;
-
-        .heading {
-          font-size: 1.3em;
-          color: #000000;
-          text-decoration: none;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-
-        .description {
-          padding-top: 0.4rem;
-          font-size: 1em;
-          color: $metaText;
-        }
-      }
+    
+    &.books {
+      color: $booksColor;
     }
   }
 }

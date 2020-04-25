@@ -1,24 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 import "../styles/index.scss"
 import Block from "../components/block"
 
 export default class Index extends React.Component {
   render() {
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const posts = this.props.data.allMarkdownRemark.edges
-    const location = this.props.location
-    console.log(this.props.data);
+    const posts = this.props.data.allStrapiBlock.edges
     return (
-      <Layout location={location} title={siteTitle}>
+      <div>
         <SEO title="Root" />
-        {posts.map(({ node }) => {
-          return <Block node={node}></Block>
+        {posts.map(({ node }, i) => {
+          return <Block key={node.slug} node={node} index={i}></Block>
         })}
-      </Layout>
+      </div>
     )
   }
 }
@@ -30,27 +26,19 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            type
-            tags
-          }
-        }
-      }
-    }
-    allStrapiBlock {
+    allStrapiBlock(sort: { fields: [created_at], order: DESC }) {
       edges {
         node {
           title
+          description
+          content
+          category
+          tags {
+            name
+          }
+          updated_at
+          created_at(formatString: "DD/MM/YYYY")
+          slug
         }
       }
     }
