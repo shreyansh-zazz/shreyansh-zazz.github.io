@@ -11,6 +11,7 @@ export default class Index extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     const posts = this.props.data.allMarkdownRemark.edges
     const location = this.props.location
+    console.log(this.props.data);
     return (
       <Layout location={location} title={siteTitle}>
         <SEO title="Root" />
@@ -43,6 +44,13 @@ export const pageQuery = graphql`
             type
             tags
           }
+        }
+      }
+    }
+    allStrapiBlock {
+      edges {
+        node {
+          title
         }
       }
     }
