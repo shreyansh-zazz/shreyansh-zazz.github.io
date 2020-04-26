@@ -1,3 +1,10 @@
+@import "./vars.scss";
+
+hr {
+  color: $gray02;
+  background-color: $gray02;
+}
+
 .display-b {
   display: block !important;
 }

@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from "react-markdown"
 
 import SEO from "../components/seo"
 import Block from "../components/block"
@@ -15,33 +15,30 @@ const BlogPostTemplate = ({ data, pageContext }) => {
 
       <Block key={post.slug} node={post}></Block>
 
-      <ReactMarkdown className="section" source={post.content} escapeHtml={false}  />
-
-      <nav>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.category + "/" + previous.slug} rel="prev">
-                ← {previous.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.category + "/" + next.slug} rel="next">
-                {next.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
+      <ReactMarkdown
+        className="section"
+        source={post.content}
+        escapeHtml={false}
+      />
+      <hr />
+      <nav className="footer-links">
+        <div className="left">
+        {previous && (
+          <Link to={previous.category + "/" + previous.slug} rel="prev">
+            ← {previous.title}
+          </Link>
+        )}
+        </div>
+        <div className="center">
+          {post.title}
+        </div>
+        <div className="right">
+        {next && (
+          <Link to={next.category + "/" + next.slug} rel="next">
+            {next.title} →
+          </Link>
+        )}
+        </div>
       </nav>
     </article>
   )
