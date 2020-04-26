@@ -23,21 +23,19 @@ const BlogPostTemplate = ({ data, pageContext }) => {
       <hr />
       <nav className="footer-links">
         <div className="left">
-        {previous && (
-          <Link to={previous.category + "/" + previous.slug} rel="prev">
-            ← {previous.title}
-          </Link>
-        )}
+          {previous && (
+            <Link to={previous.category + "/" + previous.slug} rel="prev">
+              ← {previous.title}
+            </Link>
+          )}
         </div>
-        <div className="center">
-          {post.title}
-        </div>
+        <div className="center">{post.title}</div>
         <div className="right">
-        {next && (
-          <Link to={next.category + "/" + next.slug} rel="next">
-            {next.title} →
-          </Link>
-        )}
+          {next && (
+            <Link to={next.category + "/" + next.slug} rel="next">
+              {next.title} →
+            </Link>
+          )}
         </div>
       </nav>
     </article>

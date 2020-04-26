@@ -24,6 +24,10 @@
     background-color: $booksColor;
   }
 
+  &.tags {
+    background: $tagColor;
+  }
+
   .link {
     color: $primaryColor;
     text-decoration: none;
