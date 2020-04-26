@@ -42,7 +42,7 @@ export const pageQuery = graphql`
             name
           }
           updated_at
-          created_at(formatString: "MMMM DD, YYYY")
+          created_at(formatString: "DD/MM/YYYY")
           slug
         }
       }

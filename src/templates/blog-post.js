@@ -1,35 +1,21 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import ReactMarkdown from 'react-markdown'
 
 import SEO from "../components/seo"
+import Block from "../components/block"
 
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.allStrapiBlock.edges[0].node
   const { previous, next } = pageContext
 
   return (
-    <div>
+    <article className="block-detail">
       <SEO title={post.title} description={post.description} />
-      <article>
-        <header>
-          <h1
-            style={{
-              marginBottom: 0,
-            }}
-          >
-            {post.title}
-          </h1>
-          <p
-            style={{
-              display: `block`,
-            }}
-          >
-            {post.created_at}
-          </p>
-        </header>
-        <section dangerouslySetInnerHTML={{ __html: post.content }} />
-        <hr />
-      </article>
+
+      <Block key={post.slug} node={post}></Block>
+
+      <ReactMarkdown className="section" source={post.content} escapeHtml={false}  />
 
       <nav>
         <ul
@@ -57,7 +43,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
           </li>
         </ul>
       </nav>
-    </div>
+    </article>
   )
 }
 
@@ -85,7 +71,7 @@ export const pageQuery = graphql`
           }
           content
           slug
-          created_at
+          created_at(formatString: "DD/MM/YYYY HH:MM:SS Z")
         }
       }
     }

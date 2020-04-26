@@ -5,13 +5,14 @@ import "../styles/components/block.scss"
 
 export default class Block extends React.Component {
   node
-  index
+  index = null
 
   constructor(props) {
     super(props)
 
     this.node = props.node
-    this.index = props.index
+    if (props.index >= 0)
+      this.index = <div className="sn">{props.index + "."}</div>
   }
 
   getTypeColorClass() {
@@ -30,7 +31,7 @@ export default class Block extends React.Component {
   render() {
     return (
       <div className="block">
-        <div className="sn">{this.index}.</div>
+        {this.index}
         <div className="content">
           <Link
             className="title"

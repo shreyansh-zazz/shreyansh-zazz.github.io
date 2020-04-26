@@ -33,7 +33,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://notesss-cms.herokuapp.com`,
+        apiURL: `https://notesss-cms.herokuapp.com`, // `http://localhost:1337`,
         queryLimit: 1000, // Default to 100
         contentTypes: [`block`, `tags`],
       },
@@ -77,7 +77,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#000000`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `content/assets/icon.png`,
       },
     },
