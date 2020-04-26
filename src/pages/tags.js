@@ -1,18 +1,16 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Layout from "../components/layout"
+
 import SEO from "../components/seo"
 import { Link, graphql } from "gatsby"
 
 export default class Tags extends React.Component {
   render() {
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const location = this.props.location
     const title = this.props.data.site.siteMetadata.title
-    const group = this.props.data.allMarkdownRemark.group
+    const group = this.props.data.allStrapiBlock.group
 
     return (
-      <Layout location={location} title={siteTitle}>
+      <div>
         <SEO title={title} />
         <div>
           <div>
@@ -28,7 +26,7 @@ export default class Tags extends React.Component {
             </ul>
           </div>
         </div>
-      </Layout>
+      </div>
     )
   }
 }
@@ -58,8 +56,8 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(limit: 2000) {
-      group(field: frontmatter___tags) {
+    allStrapiBlock(limit: 2000) {
+      group(field: tags___name) {
         fieldValue
         totalCount
       }

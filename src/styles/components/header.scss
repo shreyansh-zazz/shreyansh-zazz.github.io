@@ -10,6 +10,19 @@
   font-size: 1.2em;
   color: $primaryColor;
   z-index: 9;
+  transition: all 0.3s ease-in-out;
+
+  &.bits {
+    background-color: $bitsColor;
+  }
+  
+  &.bytes {
+    background-color: $bytesColor;
+  }
+  
+  &.books {
+    background-color: $booksColor;
+  }
 
   .link {
     color: $primaryColor;

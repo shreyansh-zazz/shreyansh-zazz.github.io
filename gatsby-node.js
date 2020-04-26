@@ -25,8 +25,24 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-        tagsGroup: allMarkdownRemark(limit: 2000) {
-          group(field: frontmatter___tags) {
+
+        allStrapiBlock(sort: { fields: [created_at], order: DESC }) {
+          edges {
+            node {
+              title
+              category
+              tags {
+                name
+              }
+              updated_at
+              created_at(formatString: "MMMM DD, YYYY")
+              slug
+            }
+          }
+        }
+
+        tagsGroup: allStrapiBlock(limit: 2000) {
+          group(field: tags___name) {
             fieldValue
           }
         }
@@ -39,17 +55,16 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = result.data.allStrapiBlock.edges
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
-
     createPage({
-      path: post.node.fields.slug,
+      path: `/${post.node.category}/${post.node.slug}/`,
       component: blogPost,
       context: {
-        slug: post.node.fields.slug,
+        slug: post.node.slug,
         previous,
         next,
       },

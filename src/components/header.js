@@ -8,7 +8,7 @@ import {
   FaTwitter,
   FaLinkedin,
 } from "react-icons/fa"
-import { Link } from "gatsby"
+import { Link, StaticQuery } from "gatsby"
 
 import "../styles/components/header.scss"
 
@@ -29,9 +29,23 @@ export default class Header extends React.Component {
   }
 
   render() {
+    var routeOn = this.props.location.pathname.split("/")[1]
     return (
-      <header className="header">
-        <div className="site-logo">{this.props.title}</div>
+      <header className={"header " + routeOn}>
+        <StaticQuery
+          query={graphql`
+            query HeadingQuery {
+              site {
+                siteMetadata {
+                  title
+                }
+              }
+            }
+          `}
+          render={(data) => (
+            <div className="site-logo">{data.site.siteMetadata.title}</div>
+          )}
+        />
         <div className="useful-links">
           <Link to="/" className="link" activeClassName="active">
             Root

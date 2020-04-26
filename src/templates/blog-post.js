@@ -1,68 +1,46 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import ReactMarkdown from "react-markdown"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Block from "../components/block"
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
+const BlogPostTemplate = ({ data, pageContext }) => {
+  const post = data.allStrapiBlock.edges[0].node
   const { previous, next } = pageContext
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
-      <article>
-        <header>
-          <h1
-            style={{
-              marginBottom: 0,
-            }}
-          >
-            {post.frontmatter.title}
-          </h1>
-          <p
-            style={{
-              display: `block`,
-            }}
-          >
-            {post.frontmatter.date}
-          </p>
-        </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr />
-      </article>
+    <article className="block-detail">
+      <SEO title={post.title} description={post.description} />
 
-      <nav>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
+      <Block key={post.slug} node={post}></Block>
+
+      <ReactMarkdown
+        className="section"
+        source={post.content}
+        escapeHtml={false}
+      />
+      <hr />
+      <nav className="footer-links">
+        <div className="left">
+        {previous && (
+          <Link to={previous.category + "/" + previous.slug} rel="prev">
+            ← {previous.title}
+          </Link>
+        )}
+        </div>
+        <div className="center">
+          {post.title}
+        </div>
+        <div className="right">
+        {next && (
+          <Link to={next.category + "/" + next.slug} rel="next">
+            {next.title} →
+          </Link>
+        )}
+        </div>
       </nav>
-    </Layout>
+    </article>
   )
 }
 
@@ -75,14 +53,23 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
+
+    allStrapiBlock(filter: { slug: { eq: $slug } }) {
+      edges {
+        node {
+          id
+          UID
+          title
+          description
+          category
+          tags {
+            id
+            name
+          }
+          content
+          slug
+          created_at(formatString: "DD/MM/YYYY HH:MM:SS Z")
+        }
       }
     }
   }
