@@ -3,13 +3,14 @@ import React from "react"
 import SEO from "../components/seo"
 import "../styles/index.scss"
 import Block from "../components/block"
+import colorVars from "../styles/__basics/vars.js"
 
 export default class Books extends React.Component {
   render() {
     const posts = this.props.data.allStrapiBlock.edges
     return (
       <div>
-        <SEO title="Root" />
+        <SEO title="Root" setThemeColor={colorVars.$booksColor} />
         {posts.map(({ node }, i) => {
           const type = node.category
           return type.includes("books") ? (

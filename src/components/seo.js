@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, title }) => {
+const SEO = ({ description, lang, meta, title, setThemeColor }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,7 +26,11 @@ const SEO = ({ description, lang, meta, title }) => {
   )
 
   const metaDescription = description || site.siteMetadata.description
-
+  const themeColor = setThemeColor ? (
+    <meta name="theme-color" content={setThemeColor} />
+  ) : (
+    <meta name="theme-color" content="#000000" />
+  )
   return (
     <Helmet
       htmlAttributes={{
@@ -68,7 +72,9 @@ const SEO = ({ description, lang, meta, title }) => {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      {themeColor}
+    </Helmet>
   )
 }
 
