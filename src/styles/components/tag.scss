@@ -1,0 +1,26 @@
+@import "../__basics/vars.scss";
+
+.tags {
+  .tag {
+    color: $textColor02;
+    margin: 0 0.4rem;
+
+    &:hover {
+      color: $textColor01;
+      text-decoration: underline;
+    }
+  }
+}
+
+.tag-heading {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  .all-tags-link {
+    color: $textColor02;
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* <Link to={node.category + "/" + node.slug}>{node.title}</Link> */

@@ -13,6 +13,8 @@ import { Link, StaticQuery } from "gatsby"
 import "../styles/components/header.scss"
 
 export default class Header extends React.Component {
+  routeOn
+
   constructor(props) {
     super(props)
     this.state = {
@@ -20,12 +22,17 @@ export default class Header extends React.Component {
     }
 
     this.toggleShowConnectLinks = this.toggleShowConnectLinks.bind(this)
+    this.isActive = this.isActive.bind(this)
   }
 
   toggleShowConnectLinks(e) {
     this.setState((state) => ({
       showConnectLinks: !state.showConnectLinks,
     }))
+  }
+
+  isActive(name) {
+    return name === this.props.location.pathname.split("/")[1] ? "active" : null
   }
 
   render() {
@@ -51,19 +58,19 @@ export default class Header extends React.Component {
             Root
           </Link>
           <div className="separator">|</div>
-          <Link to="/bits/" className="link" activeClassName="active">
+          <Link to="/bits/" className={"link " + this.isActive("bits")}>
             Bits
           </Link>
           <div className="separator">|</div>
-          <Link to="/bytes/" className="link" activeClassName="active">
+          <Link to="/bytes/" className={"link " + this.isActive("bytes")}>
             Bytes
           </Link>
           <div className="separator">|</div>
-          <Link to="/books/" className="link" activeClassName="active">
+          <Link to="/books/" className={"link " + this.isActive("books")}>
             Books
           </Link>
           <div className="separator">|</div>
-          <Link to="/tags/" className="link" activeClassName="active">
+          <Link to="/tags/" className={"link " + this.isActive("tags")}>
             Tags
           </Link>
         </div>

@@ -3,6 +3,8 @@ import SEO from "../components/seo"
 
 // Components
 import { Link, graphql } from "gatsby"
+import "../styles/components/tag.scss"
+import Block from "../components/block"
 
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext
@@ -14,23 +16,15 @@ const Tags = ({ pageContext, data, location }) => {
   return (
     <div>
       <SEO title={tagHeader} />
-      <div>
+      <div className="tag-heading">
+        <Link className="all-tags-link" to="/tags">
+          All tags
+        </Link>
         <h1>{tagHeader}</h1>
-        <ul>
-          {edges.map(({ node }) => {
-            return (
-              <li key={node.slug}>
-                <Link to={node.category + "/" + node.slug}>{node.title}</Link>
-              </li>
-            )
-          })}
-        </ul>
-        {/*
-                This links to a page that does not yet exist.
-                You'll come back to it!
-              */}
-        <Link to="/tags">All tags</Link>
       </div>
+      {edges.map(({ node }, i) => {
+        return <Block key={node.slug} node={node} index={i} />
+      })}
     </div>
   )
 }
@@ -52,9 +46,16 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
-          slug
           title
+          description
+          content
           category
+          tags {
+            name
+          }
+          updated_at
+          created_at(formatString: "DD/MM/YYYY")
+          slug
         }
       }
     }
