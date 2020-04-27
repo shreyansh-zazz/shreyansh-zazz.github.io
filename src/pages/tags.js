@@ -4,6 +4,8 @@ import PropTypes from "prop-types"
 import SEO from "../components/seo"
 import { Link, graphql } from "gatsby"
 
+import "../styles/components/tag.scss"
+
 export default class Tags extends React.Component {
   render() {
     const title = this.props.data.site.siteMetadata.title
@@ -12,19 +14,13 @@ export default class Tags extends React.Component {
     return (
       <div>
         <SEO title={title} />
-        <div>
-          <div>
-            <h1>Tags</h1>
-            <ul>
-              {group.map((tag) => (
-                <li key={tag.fieldValue}>
-                  <Link to={`/tags/${tag.fieldValue}/`}>
-                    {tag.fieldValue} ({tag.totalCount})
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="tags">
+          <h1>Tags</h1>
+          {group.map((tag) => (
+            <Link className="tag" to={`/tags/${tag.fieldValue}/`}>
+              {tag.fieldValue}({tag.totalCount})
+            </Link>
+          ))}
         </div>
       </div>
     )

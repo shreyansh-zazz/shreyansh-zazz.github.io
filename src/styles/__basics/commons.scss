@@ -14,7 +14,13 @@ hr {
   font-weight: 600;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
   padding: 0;
 }
@@ -25,4 +31,37 @@ a {
   &:hover {
     text-decoration: underline;
   }
+}
+
+h1 {
+  font-size: 1.6em;
+  font-weight: 800;
+  margin: 0 0 1.1rem 0;
+  line-height: 1.42;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+h5 {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 1.1em;
+  font-weight: 600;
+  text-decoration: underline;
 }
