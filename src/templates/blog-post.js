@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown"
 
 import SEO from "../components/seo"
 import Block from "../components/block"
+import colorVar from "../styles/__basics/vars"
 
 const BlogPostTemplate = ({ data, pageContext }) => {
   const post = data.allStrapiBlock.edges[0].node
@@ -11,7 +12,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
 
   return (
     <article className="block-detail">
-      <SEO title={post.title} description={post.description} />
+      <SEO title={post.title} description={post.description} setThemeColor={`${colorVar['$'+post.category+'Color']}`} />
 
       <Block key={post.slug} node={post}></Block>
 
