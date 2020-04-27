@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import { Link, graphql } from "gatsby"
 
 import "../styles/components/tag.scss"
+import colorVars from "../styles/__basics/vars.js"
 
 export default class Tags extends React.Component {
   render() {
@@ -13,7 +14,7 @@ export default class Tags extends React.Component {
 
     return (
       <div>
-        <SEO title={title} />
+        <SEO title={title} setThemeColor={colorVars.$tagColor} />
         <div className="tags">
           <h1>Tags</h1>
           {group.map((tag) => (
