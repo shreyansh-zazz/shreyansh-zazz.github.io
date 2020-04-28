@@ -88,7 +88,81 @@ module.exports = {
         trackingId: `UA-164808337-1`,
       },
     },
-    `gatsby-plugin-feed`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allStrapiBlock } }) => {
+              return allStrapiBlock.edges.map((edge) => {
+                return Object.assign({}, edge.node, {
+                  title: edge.node.title,
+                  description: edge.node.description,
+                  categories: [edge.node.category],
+                  date: edge.node.created_at,
+                  url:
+                    site.siteMetadata.siteUrl +
+                    "/" +
+                    edge.node.category +
+                    "/" +
+                    edge.node.slug,
+                  guid:
+                    site.siteMetadata.siteUrl +
+                    "/" +
+                    edge.node.category +
+                    "/" +
+                    edge.node.slug,
+                  custom_elements: [
+                    {
+                      "content:encoded": edge.node.content,
+                    },
+                    {
+                      "content:tags": edge.node.tags
+                        .map(({ name }) => name)
+                        .toString(),
+                    },
+                  ],
+                })
+              })
+            },
+            query: `
+              {
+                allStrapiBlock(sort: { fields: [created_at], order: DESC }) {
+                  edges {
+                    node {
+                      title
+                      description
+                      content
+                      category
+                      tags {
+                        name
+                      }
+                      updated_at
+                      created_at
+                      slug
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "Yet another blog on tech",
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
