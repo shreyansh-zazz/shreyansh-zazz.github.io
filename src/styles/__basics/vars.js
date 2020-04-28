@@ -9,5 +9,5 @@ module.exports = {
   $bitsColor: "#12448e",
   $bytesColor: "#188430",
   $booksColor: "#ce691b",
-  $tagColor: "#12448e"
+  $tagColor: "#12448e",
 }

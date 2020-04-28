@@ -8,7 +8,7 @@ import colorVars from "../styles/__basics/vars.js"
 export default class Bits extends React.Component {
   render() {
     const posts = this.props.data.allStrapiBlock.edges
-    
+
     return (
       <div>
         <SEO title="Root" setThemeColor={colorVars.$bitsColor} />

@@ -12,7 +12,11 @@ const BlogPostTemplate = ({ data, pageContext }) => {
 
   return (
     <article className="block-detail">
-      <SEO title={post.title} description={post.description} setThemeColor={`${colorVar['$'+post.category+'Color']}`} />
+      <SEO
+        title={post.title}
+        description={post.description}
+        setThemeColor={`${colorVar["$" + post.category + "Color"]}`}
+      />
 
       <Block key={post.slug} node={post}></Block>
 
