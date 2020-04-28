@@ -7,15 +7,36 @@ import Block from "../components/block"
 
 export default class Index extends React.Component {
   render() {
-    const posts = this.props.data.allStrapiBlock.edges
+    var searchList = this.isSearching(this.props.location)
+
+    const posts = searchList.results || this.props.data.allStrapiBlock.edges
+
     return (
       <div>
         <SEO title="Root" />
-        {posts.map(({ node }, i) => {
+        {(() => {
+          if (searchList.query)
+            return <h1>Search results for "{searchList.query}"</h1>
+        })()}
+        {posts.map((node, i) => {
+          if (!searchList.results) node = node.node
           return <Block key={node.slug} node={node} index={i}></Block>
         })}
       </div>
     )
+  }
+
+  isSearching(location) {
+    if (location && location.state)
+      if (location.state.query)
+        return {
+          query: location.state.query,
+          results: location.state.results,
+        }
+    return {
+      query: false,
+      results: false,
+    }
   }
 }
 
