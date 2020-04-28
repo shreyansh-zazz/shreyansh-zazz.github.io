@@ -1,7 +1,6 @@
 import React from "react"
 import {
   FaCog,
-  FaSearch,
   FaGithub,
   FaDribbble,
   FaPinterest,
@@ -11,6 +10,7 @@ import {
 import { Link, StaticQuery } from "gatsby"
 
 import "../styles/components/header.scss"
+import Search from "./search"
 
 export default class Header extends React.Component {
   routeOn
@@ -20,6 +20,8 @@ export default class Header extends React.Component {
     this.state = {
       showConnectLinks: false,
     }
+
+    props.location.state = null
 
     this.toggleShowConnectLinks = this.toggleShowConnectLinks.bind(this)
     this.isActive = this.isActive.bind(this)
@@ -47,11 +49,16 @@ export default class Header extends React.Component {
                   title
                 }
               }
+              siteSearchIndex {
+                index
+              }
             }
           `}
-          render={(data) => (
-            <div className="site-logo">{data.site.siteMetadata.title}</div>
-          )}
+          render={(data) => {
+            return (
+              <div className="site-logo">{data.site.siteMetadata.title}</div>
+            )
+          }}
         />
         <div className="useful-links">
           <Link to="/" className="link" activeClassName="active">
@@ -75,12 +82,7 @@ export default class Header extends React.Component {
           </Link>
         </div>
         <div className="pref-links">
-          <div className="search-bar">
-            <input type="text" placeholder="Search it out" />
-            <div className="icon-link search-btn">
-              <FaSearch />
-            </div>
-          </div>
+          <Search />
           <div className="pref-link-wrap">
             <Link to="/about/" className="link" activeClassName="active">
               About

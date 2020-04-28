@@ -39,6 +39,26 @@ module.exports = {
       },
     },
     {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        // Fields to index
+        fields: [`title`, `searchTags`],
+        // How to resolve each field`s value for a supported node type
+        resolvers: {
+          // For any node of type MarkdownRemark, list how to resolve the fields` values
+          StrapiBlock: {
+            title: (node) => node.title,
+            searchTags: (node) => node.tags.map(({ name }) => name),
+            tags: (node) => node.tags,
+            slug: (node) => node.slug,
+            description: (node) => node.description,
+            category: (node) => node.category,
+            created_at: (node) => node.created_at,
+          },
+        },
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
