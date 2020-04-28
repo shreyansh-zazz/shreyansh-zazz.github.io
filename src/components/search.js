@@ -1,6 +1,6 @@
 import React from "react"
 import { FaSearch } from "react-icons/fa"
-import { StaticQuery, navigate } from "gatsby"
+import { StaticQuery, navigate, graphql } from "gatsby"
 import { Index } from "elasticlunr"
 
 export default class Search extends React.Component {

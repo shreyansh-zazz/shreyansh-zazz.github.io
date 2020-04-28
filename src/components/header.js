@@ -7,7 +7,7 @@ import {
   FaTwitter,
   FaLinkedin,
 } from "react-icons/fa"
-import { Link, StaticQuery } from "gatsby"
+import { Link, StaticQuery, graphql } from "gatsby"
 
 import "../styles/components/header.scss"
 import Search from "./search"
