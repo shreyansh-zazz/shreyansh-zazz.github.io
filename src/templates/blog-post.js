@@ -9,9 +9,7 @@ import colorVar from "../styles/__basics/vars"
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.allStrapiBlock.edges[0].node
   const { previous, next } = pageContext
-  const cover = post.cover
-      ? post.cover.childImageSharp.resize
-      : null
+  const cover = post.cover ? post.cover.childImageSharp.resize : null
 
   return (
     <article className="block-detail">
@@ -21,6 +19,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         setThemeColor={`${colorVar["$" + post.category + "Color"]}`}
         pathname={location.pathname}
         image={cover}
+      />
 
       <Block key={post.slug} node={post}></Block>
 
@@ -81,7 +80,7 @@ export const pageQuery = graphql`
                 src
                 width
                 height
-              } 
+              }
             }
           }
           created_at(formatString: "DD/MM/YYYY HH:MM:SS Z")
