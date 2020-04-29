@@ -21,7 +21,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         setThemeColor={`${colorVar["$" + post.category + "Color"]}`}
         pathname={location.pathname}
         image={cover}
-      />
 
       <Block key={post.slug} node={post}></Block>
 
