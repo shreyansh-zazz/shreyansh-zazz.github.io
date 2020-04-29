@@ -1,5 +1,5 @@
 import React from "react"
-import {graphql} from "gatsby"
+import { graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import "../styles/index.scss"
@@ -12,7 +12,11 @@ export default class Bits extends React.Component {
 
     return (
       <div>
-        <SEO title="Root" setThemeColor={colorVars.$bitsColor} />
+        <SEO
+          title="Root"
+          setThemeColor={colorVars.$bitsColor}
+          pathname={this.props.location.pathname}
+        />
         {posts.map(({ node }, i) => {
           const type = node.category
           return type.includes("bits") ? (

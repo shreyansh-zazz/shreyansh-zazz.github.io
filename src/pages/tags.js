@@ -14,7 +14,11 @@ export default class Tags extends React.Component {
 
     return (
       <div>
-        <SEO title={title} setThemeColor={colorVars.$tagColor} />
+        <SEO
+          title={title}
+          setThemeColor={colorVars.$tagColor}
+          pathname={this.props.location.pathname}
+        />
         <div className="tags">
           <h1>Tags</h1>
           {group.map((tag) => (

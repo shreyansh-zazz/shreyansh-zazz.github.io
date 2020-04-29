@@ -61,7 +61,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
     createPage({
-      path: `/${post.node.category}/${post.node.slug}/`,
+      path: `${post.node.category}/${post.node.slug}/`,
       component: blogPost,
       context: {
         slug: post.node.slug,
@@ -76,7 +76,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Make tag pages
   tags.forEach((tag) => {
     createPage({
-      path: `/tags/${tag.fieldValue}/`,
+      path: `tags/${tag.fieldValue}/`,
       component: tagTemplate,
       context: {
         tag: tag.fieldValue,

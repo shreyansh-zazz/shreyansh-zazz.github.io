@@ -13,7 +13,7 @@ export default class Index extends React.Component {
 
     return (
       <div>
-        <SEO title="Root" />
+        <SEO title="Root" pathname={this.props.location.pathname} />
         {(() => {
           if (searchList.query)
             return <h1>Search results for "{searchList.query}"</h1>

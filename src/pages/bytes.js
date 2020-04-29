@@ -1,5 +1,5 @@
 import React from "react"
-import {graphql} from "gatsby"
+import { graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import "../styles/index.scss"
@@ -11,7 +11,11 @@ export default class Bytes extends React.Component {
     const posts = this.props.data.allStrapiBlock.edges
     return (
       <div>
-        <SEO title="Root" setThemeColor={colorVars.$bytesColor} />
+        <SEO
+          title="Root"
+          setThemeColor={colorVars.$bytesColor}
+          pathname={this.props.location.pathname}
+        />
         {posts.map(({ node }, i) => {
           const type = node.category
           return type.includes("bytes") ? (
