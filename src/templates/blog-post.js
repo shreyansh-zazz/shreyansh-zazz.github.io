@@ -76,7 +76,7 @@ export const pageQuery = graphql`
           slug
           cover {
             childImageSharp {
-              resize(height: 480, width: 720) {
+              resize(width: 720) {
                 src
                 width
                 height
