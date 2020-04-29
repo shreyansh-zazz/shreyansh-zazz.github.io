@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 import Block from "../components/block"
 import colorVar from "../styles/__basics/vars"
 
-const BlogPostTemplate = ({ data, pageContext }) => {
+const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.allStrapiBlock.edges[0].node
   const { previous, next } = pageContext
 
@@ -16,6 +16,7 @@ const BlogPostTemplate = ({ data, pageContext }) => {
         title={post.title}
         description={post.description}
         setThemeColor={`${colorVar["$" + post.category + "Color"]}`}
+        pathname={location.pathname}
       />
 
       <Block key={post.slug} node={post}></Block>

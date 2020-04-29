@@ -15,7 +15,7 @@ const Tags = ({ pageContext, data, location }) => {
 
   return (
     <div>
-      <SEO title={tagHeader} />
+      <SEO title={tagHeader} pathname={location.pathname} />
       <div className="tag-heading">
         <Link className="all-tags-link" to="/tags">
           All tags

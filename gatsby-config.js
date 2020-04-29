@@ -3,7 +3,7 @@ module.exports = {
     title: `Notesss`,
     author: `Shreyansh Zazz`,
     description: `Yet another blog on tech`,
-    siteUrl: `https://notesss.netlify.app`,
+    siteUrl: `https://notesss.netlify.app/`,
     social: {
       twitter: `shreyansh-zazz`,
     },
@@ -114,13 +114,11 @@ module.exports = {
                   date: edge.node.created_at,
                   url:
                     site.siteMetadata.siteUrl +
-                    "/" +
                     edge.node.category +
                     "/" +
                     edge.node.slug,
                   guid:
                     site.siteMetadata.siteUrl +
-                    "/" +
                     edge.node.category +
                     "/" +
                     edge.node.slug,

@@ -11,7 +11,11 @@ export default class Books extends React.Component {
     const posts = this.props.data.allStrapiBlock.edges
     return (
       <div>
-        <SEO title="Root" setThemeColor={colorVars.$booksColor} />
+        <SEO
+          title="Root"
+          setThemeColor={colorVars.$booksColor}
+          pathname={this.props.location.pathname}
+        />
         {posts.map(({ node }, i) => {
           const type = node.category
           return type.includes("books") ? (
