@@ -101,7 +101,7 @@ const SEO = ({
             ? [
                 {
                   property: "og:image",
-                  content: image,
+                  content: metaImage.src,
                 },
                 {
                   property: "og:image:width",
