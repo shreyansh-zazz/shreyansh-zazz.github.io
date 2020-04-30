@@ -15,7 +15,7 @@ export default class Tags extends React.Component {
     return (
       <div>
         <SEO
-          title={title}
+          title="Tags"
           setThemeColor={colorVars.$tagColor}
           pathname={this.props.location.pathname}
         />

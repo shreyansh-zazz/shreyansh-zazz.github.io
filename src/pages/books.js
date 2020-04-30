@@ -15,7 +15,7 @@ export default class Books extends React.Component {
     return (
       <div>
         <SEO
-          title="Root"
+          title="Books"
           setThemeColor={colorVars.$booksColor}
           pathname={this.props.location.pathname}
           image={cover}

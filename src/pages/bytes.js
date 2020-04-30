@@ -15,7 +15,7 @@ export default class Bytes extends React.Component {
     return (
       <div>
         <SEO
-          title="Root"
+          title="Bytes"
           setThemeColor={colorVars.$bytesColor}
           pathname={this.props.location.pathname}
           image={cover}
