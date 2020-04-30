@@ -16,7 +16,7 @@ export default class Bits extends React.Component {
     return (
       <div>
         <SEO
-          title="Root"
+          title="Bits"
           setThemeColor={colorVars.$bitsColor}
           pathname={this.props.location.pathname}
           image={cover}
