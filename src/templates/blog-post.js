@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import ReactMarkdown from "react-markdown"
+import ReactMarkdown from "react-markdown/with-html"
 
 import SEO from "../components/seo"
 import Block from "../components/block"
