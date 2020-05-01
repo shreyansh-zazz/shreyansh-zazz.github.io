@@ -1,10 +1,3 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
@@ -44,11 +37,6 @@ const SEO = ({
       ? `${site.siteMetadata.siteUrl}${metaImage.src}`
       : null
   const customMeta = meta ? meta : []
-  const themeColor = setThemeColor ? (
-    <meta name="theme-color" content={setThemeColor} />
-  ) : (
-    <meta name="theme-color" content="#000000" />
-  )
   return (
     <Helmet
       htmlAttributes={{
@@ -99,6 +87,10 @@ const SEO = ({
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: "theme-color",
+          content: setThemeColor ? setThemeColor : "#000000",
+        },
       ]
         .concat(
           metaImage
@@ -128,9 +120,7 @@ const SEO = ({
               ]
         )
         .concat(customMeta)}
-    >
-      {themeColor}
-    </Helmet>
+    />
   )
 }
 
