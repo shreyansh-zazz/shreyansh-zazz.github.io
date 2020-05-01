@@ -9,7 +9,6 @@ import colorVars from "../styles/__basics/vars.js"
 
 export default class Tags extends React.Component {
   render() {
-    const title = this.props.data.site.siteMetadata.title
     const group = this.props.data.allStrapiBlock.group
 
     return (
