@@ -28,6 +28,9 @@ const SEO = ({
             description
             author
             siteUrl
+            social {
+              twitter
+            }
           }
         }
       }
@@ -40,6 +43,7 @@ const SEO = ({
     metaImage && metaImage.src
       ? `${site.siteMetadata.siteUrl}${metaImage.src}`
       : null
+  const customMeta = meta ? meta : []
   const themeColor = setThemeColor ? (
     <meta name="theme-color" content={setThemeColor} />
   ) : (
@@ -85,7 +89,7 @@ const SEO = ({
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: site.siteMetadata.social.twitter,
         },
         {
           name: `twitter:title`,
@@ -101,7 +105,7 @@ const SEO = ({
             ? [
                 {
                   property: "og:image",
-                  content: metaImage.src,
+                  content: image,
                 },
                 {
                   property: "og:image:width",
@@ -123,7 +127,7 @@ const SEO = ({
                 },
               ]
         )
-        .concat(meta)}
+        .concat(customMeta)}
     >
       {themeColor}
     </Helmet>
