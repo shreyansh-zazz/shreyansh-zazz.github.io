@@ -36,6 +36,7 @@ module.exports = {
         apiURL: `https://notesss-cms.herokuapp.com`, // `http://localhost:1337`,
         queryLimit: 1000, // Default to 100
         contentTypes: [`block`, `tags`],
+        singleTypes: [`about`],
       },
     },
     {
