@@ -46,8 +46,7 @@ export const pageQuery = graphql`
       updated_at(formatString: "DD/MM/YYYY HH:MM:SS Z")
       name
       resume {
-        url
-        updated_at
+        publicURL
       }
       tags {
         name
