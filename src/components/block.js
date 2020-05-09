@@ -46,7 +46,7 @@ export default class Block extends React.Component {
           <p className="meta">
             <Link
               className={"category " + this.getTypeColorClass()}
-              to={this.node.category + "/" + this.node.slug}
+              to={this.node.category}
             >
               {this.node.category}
             </Link>
