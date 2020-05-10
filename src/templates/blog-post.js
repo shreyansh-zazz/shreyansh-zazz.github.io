@@ -7,7 +7,7 @@ import Block from "../components/block"
 import colorVar from "../styles/__basics/vars"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.allStrapiBlock.edges[0].node
+  const post = Object.assign(data.markdownRemark, data.markdownRemark.fields, data.markdownRemark.frontmatter)
   const { previous, next } = pageContext
   const cover = post.cover ? post.cover.childImageSharp.resize : null
 
@@ -25,23 +25,23 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
       <ReactMarkdown
         className="section"
-        source={post.content}
+        source={post.rawMarkdownBody}
         escapeHtml={false}
       />
       <hr />
       <nav className="footer-links">
         <div className="left">
           {previous && (
-            <Link to={previous.category + "/" + previous.slug} rel="prev">
-              ← {previous.title}
+            <Link to={previous.fields.slug} rel="prev">
+              ← {previous.frontmatter.title}
             </Link>
           )}
         </div>
-        <div className="center">{post.title}</div>
+        <div className="center">{post.frontmatter.title}</div>
         <div className="right">
           {next && (
-            <Link to={next.category + "/" + next.slug} rel="next">
-              {next.title} →
+            <Link to={next.fields.slug} rel="next">
+              {next.frontmatter.title} →
             </Link>
           )}
         </div>
@@ -59,33 +59,21 @@ export const pageQuery = graphql`
         title
       }
     }
-
-    allStrapiBlock(filter: { slug: { eq: $slug } }) {
-      edges {
-        node {
-          id
-          UID
-          title
-          description
-          category
-          tags {
-            id
-            name
-          }
-          content
-          slug
-          cover {
-            childImageSharp {
-              resize(width: 720) {
-                src
-                width
-                height
-              }
-            }
-          }
-          created_at(formatString: "DD/MM/YYYY HH:MM:SS Z")
-        }
+    markdownRemark(fields: {slug: {eq: $slug}}) {
+      excerpt
+      fields {
+        slug
       }
+      frontmatter {
+        category
+        title
+        tags
+        description
+        date
+      }
+      html
+      rawMarkdownBody
+      timeToRead
     }
   }
 `

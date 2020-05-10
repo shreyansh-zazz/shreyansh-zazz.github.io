@@ -9,11 +9,7 @@ export default class Index extends React.Component {
   render() {
     var searchList = this.isSearching(this.props.location)
 
-    const posts =
-      searchList.results ||
-      this.props.data.allMarkdownRemark.edges ||
-      this.props.data.allStrapiBlock.edges
-    console.log(posts)
+    const posts = searchList.results || this.props.data.allMarkdownRemark.edges
     return (
       <div>
         <SEO title="Root" pathname={this.props.location.pathname} />
@@ -66,22 +62,6 @@ export const pageQuery = graphql`
           }
           excerpt(format: PLAIN)
           html
-        }
-      }
-    }
-    allStrapiBlock(sort: { fields: [created_at], order: DESC }) {
-      edges {
-        node {
-          title
-          description
-          content
-          category
-          tags {
-            name
-          }
-          updated_at
-          created_at(formatString: "DD/MM/YYYY")
-          slug
         }
       }
     }
