@@ -49,6 +49,9 @@ export default class Block extends React.Component {
               {this.node.category}
             </Link>
             &nbsp;|&nbsp;
+            {this.node.timeToRead}min &nbsp;|&nbsp;
+            {this.node.date}
+            &nbsp;|&nbsp;
             {this.node.tags?.map((name, i) => {
               var linkTag = (
                 <span>
@@ -68,9 +71,6 @@ export default class Block extends React.Component {
                 )
               return linkTag
             })}
-            &nbsp;|&nbsp;
-            {this.node.timeToRead} min &nbsp;|&nbsp;
-            {this.node.date}
           </p>
         </div>
       </div>

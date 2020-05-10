@@ -208,7 +208,12 @@
     }
 
     iframe {
-      width: 100%;
+      width: 520px;
+      height: 320px;
+
+      @media (max-width: 1024px) {
+        width: 100%;
+      }
     }
     
     /* === A bit of a gross hack so we can have bleeding divs/blockquotes. */
