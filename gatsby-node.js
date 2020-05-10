@@ -10,39 +10,30 @@ exports.createPages = async ({ graphql, actions }) => {
     `
       {
         allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
+          sort: { order: DESC, fields: frontmatter___date }
           limit: 1000
         ) {
           edges {
             node {
+              timeToRead
+              frontmatter {
+                date(formatString: "DD/MM/YYYY")
+                description
+                tags
+                title
+                category
+              }
               fields {
                 slug
               }
-              frontmatter {
-                title
-                tags
-              }
+              excerpt(format: PLAIN)
+              html
             }
           }
         }
-
-        allStrapiBlock(sort: { fields: [created_at], order: DESC }) {
-          edges {
-            node {
-              title
-              category
-              tags {
-                name
-              }
-              updated_at
-              created_at(formatString: "MMMM DD, YYYY")
-              slug
-            }
-          }
-        }
-
-        tagsGroup: allStrapiBlock(limit: 2000) {
-          group(field: tags___name) {
+        tagsGroup: allMarkdownRemark {
+          group(field: frontmatter___tags) {
+            totalCount
             fieldValue
           }
         }
@@ -55,16 +46,16 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const posts = result.data.allStrapiBlock.edges
+  const posts = result.data.allMarkdownRemark.edges
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
     createPage({
-      path: `${post.node.category}/${post.node.slug}/`,
+      path: post.node.fields.slug,
       component: blogPost,
       context: {
-        slug: post.node.slug,
+        slug: post.node.fields.slug,
         previous,
         next,
       },
