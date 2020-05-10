@@ -69,6 +69,7 @@ export default class Block extends React.Component {
               return linkTag
             })}
             &nbsp;|&nbsp;
+            {this.node.timeToRead} min &nbsp;|&nbsp;
             {this.node.date}
           </p>
         </div>

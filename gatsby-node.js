@@ -31,22 +31,6 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-
-        allStrapiBlock(sort: { fields: [created_at], order: DESC }) {
-          edges {
-            node {
-              title
-              category
-              tags {
-                name
-              }
-              updated_at
-              created_at(formatString: "DD/MM/YYYY")
-              slug
-            }
-          }
-        }
-
         tagsGroup: allMarkdownRemark {
           group(field: frontmatter___tags) {
             totalCount
