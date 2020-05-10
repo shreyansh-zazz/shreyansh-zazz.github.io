@@ -57,15 +57,22 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-embedder`,
             options: {
-              maxWidth: 590,
+              customTransformers: [
+                // Your custom transformers
+              ],
+              services: {
+                YouTube: {
+                  height: 'auto'
+                }
+              },
             },
           },
           {
-            resolve: `gatsby-remark-responsive-iframe`,
+            resolve: `gatsby-remark-images`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
+              maxWidth: 590,
             },
           },
           `gatsby-remark-prismjs`,
