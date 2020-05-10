@@ -32,30 +32,22 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-strapi`,
-      options: {
-        apiURL: `https://notesss-cms.herokuapp.com`, // `http://localhost:1337`,
-        queryLimit: 1000, // Default to 100
-        contentTypes: [`block`, `tags`],
-        singleTypes: [`about`],
-      },
-    },
-    {
       resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
       options: {
         // Fields to index
-        fields: [`title`, `searchTags`],
+        fields: [`title`, `searchTags`, `description`, `excerpt`],
         // How to resolve each field`s value for a supported node type
         resolvers: {
           // For any node of type MarkdownRemark, list how to resolve the fields` values
-          StrapiBlock: {
-            title: (node) => node.title,
-            searchTags: (node) => node.tags.map(({ name }) => name),
-            tags: (node) => node.tags,
-            slug: (node) => node.slug,
-            description: (node) => node.description,
-            category: (node) => node.category,
-            created_at: (node) => node.created_at,
+          MarkdownRemark: {
+            title: (node) => node.frontmatter.title,
+            description: (node) => node.frontmatter.description,
+            searchTags: (node) => node.frontmatter.tags,
+            frontmatter: (node) => node.frontmatter,
+            fields: (node) => node.fields,
+            excerpt: (node) => node.excerpt,
+            html: (node) => node.html,
+            rawMarkdownBody: (node) => node.rawMarkdownBody,
           },
         },
       },
@@ -107,31 +99,21 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allStrapiBlock } }) => {
-              return allStrapiBlock.edges.map((edge) => {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map((edge) => {
                 return Object.assign({}, edge.node, {
-                  title: edge.node.title,
-                  description: edge.node.description,
-                  categories: [edge.node.category],
-                  date: edge.node.created_at,
-                  url:
-                    site.siteMetadata.siteUrl +
-                    edge.node.category +
-                    "/" +
-                    edge.node.slug,
-                  guid:
-                    site.siteMetadata.siteUrl +
-                    edge.node.category +
-                    "/" +
-                    edge.node.slug,
+                  title: edge.node.frontmatter.title,
+                  description: edge.node.frontmatter.description,
+                  categories: [edge.node.frontmatter.category],
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: edge.node.fields.slug,
                   custom_elements: [
                     {
-                      "content:encoded": edge.node.content,
+                      "content:encoded": edge.node.rawMarkdownBody,
                     },
                     {
-                      "content:tags": edge.node.tags
-                        .map(({ name }) => name)
-                        .toString(),
+                      "content:tags": edge.node.frontmatter.tags.toString(),
                     },
                   ],
                 })
@@ -139,21 +121,26 @@ module.exports = {
             },
             query: `
               {
-                allStrapiBlock(sort: { fields: [created_at], order: DESC }) {
+                allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
                   edges {
                     node {
-                      title
-                      description
-                      content
-                      category
-                      tags {
-                        name
+                      frontmatter {
+                        title
+                        description
+                        category
+                        tags
+                        date(formatString: "DD/MM/YYYY")
                       }
-                      updated_at
-                      created_at
-                      slug
+                      timeToRead
+                      html
+                      rawMarkdownBody
+                      excerpt
+                      fields {
+                        slug
+                      }
                     }
                   }
+                  totalCount
                 }
               }
             `,

@@ -8,7 +8,7 @@ import colorVars from "../styles/__basics/vars.js"
 
 export default class Bits extends React.Component {
   render() {
-    const posts = this.props.data.allStrapiBlock.edges
+    const posts = this.props.data.allMarkdownRemark.edges
     const cover = this.props.data.imageSharp
       ? this.props.data.imageSharp.resize
       : null
@@ -22,10 +22,7 @@ export default class Bits extends React.Component {
           image={cover}
         />
         {posts.map(({ node }, i) => {
-          const type = node.category
-          return type.includes("bits") ? (
-            <Block node={node} index={i}></Block>
-          ) : null
+          return <Block node={node} index={i}></Block>
         })}
       </div>
     )
@@ -39,22 +36,25 @@ export const pageQuery = graphql`
         title
       }
     }
-    allStrapiBlock(
-      sort: { fields: [created_at], order: DESC }
-      filter: { category: { eq: "bits" } }
+    allMarkdownRemark(
+      sort: { order: DESC, fields: frontmatter___date }
+      filter: { frontmatter: { category: { eq: "bits" } } }
     ) {
       edges {
         node {
-          title
-          description
-          content
-          category
-          tags {
-            name
+          timeToRead
+          frontmatter {
+            date(formatString: "DD/MM/YYYY")
+            description
+            tags
+            title
+            category
           }
-          updated_at
-          created_at(formatString: "DD/MM/YYYY")
-          slug
+          fields {
+            slug
+          }
+          excerpt(format: PLAIN)
+          html
         }
       }
     }

@@ -10,7 +10,11 @@ export default class Block extends React.Component {
   constructor(props) {
     super(props)
 
-    this.node = props.node
+    this.node = Object.assign(
+      props.node,
+      props.node.frontmatter,
+      props.node.fields
+    )
     if (props.index >= 0)
       this.index = <div className="sn">{props.index + "."}</div>
   }
@@ -33,16 +37,10 @@ export default class Block extends React.Component {
       <div className="block">
         {this.index}
         <div className="content">
-          <Link
-            className="title"
-            to={this.node.category + "/" + this.node.slug}
-          >
+          <Link className="title" to={this.node.slug}>
             {this.node.title}
           </Link>
-          <p
-            className="desc"
-            dangerouslySetInnerHTML={{ __html: this.node.description }}
-          ></p>
+          <p className="desc"> {this.node.description || this.node.excerpt}</p>
           <p className="meta">
             <Link
               className={"category " + this.getTypeColorClass()}
@@ -51,7 +49,7 @@ export default class Block extends React.Component {
               {this.node.category}
             </Link>
             &nbsp;|&nbsp;
-            {this.node.tags?.map(({ name }, i) => {
+            {this.node.tags?.map((name, i) => {
               var linkTag = (
                 <span>
                   ,&nbsp;
@@ -71,7 +69,8 @@ export default class Block extends React.Component {
               return linkTag
             })}
             &nbsp;|&nbsp;
-            {this.node.created_at}
+            {this.node.timeToRead} min &nbsp;|&nbsp;
+            {this.node.date}
           </p>
         </div>
       </div>
