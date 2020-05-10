@@ -57,19 +57,6 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-embedder`,
-            options: {
-              customTransformers: [
-                // Your custom transformers
-              ],
-              services: {
-                YouTube: {
-                  height: 'auto'
-                }
-              },
-            },
-          },
-          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,

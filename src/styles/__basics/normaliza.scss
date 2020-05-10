@@ -622,6 +622,10 @@ pre tt:after {
 
 :root {
   font-size: 12px;
+
+  @media (max-width: 780px) {
+    font-size: 11px;
+  }
 }
 
 p {

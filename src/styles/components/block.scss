@@ -16,6 +16,10 @@
     padding-right: 1.2rem;
   }
 
+  .content {
+    word-wrap: break-word;
+  }
+
   .title {
     display: inline-block;
     margin-bottom: 0.4rem;
@@ -40,8 +44,14 @@
     font-size: 1em;
   }
 
+  .desc { 
+    text-align: justify;
+  }
+
   .meta {
     margin-top: 0.6rem;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .category {
@@ -72,6 +82,7 @@
 
   .section {
     margin: 0.8rem 0 1.2rem 0;
+    text-align: justify;
 
     @media print {
       *,
@@ -209,6 +220,11 @@
 
     iframe {
       width: 520px;
+      height: 320px;
+
+      @media (max-width: 1024px) {
+        width: 100%;
+      }
     }
     
     /* === A bit of a gross hack so we can have bleeding divs/blockquotes. */

@@ -58,15 +58,15 @@ export default class About extends React.Component {
             resume
           </a>
           &nbsp;|&nbsp;
-          <Link className="u-dot" to="/tag/portfolio">
+          <Link className="u-dot" to="/tags/portfolio">
             portfolio
           </Link>
           &nbsp;|&nbsp;
-          <Link className="u-dot" to="/tag/project">
+          <Link className="u-dot" to="/tags/project">
             project
           </Link>
           &nbsp;|&nbsp;
-          <Link className="u-dot" to="/tag/ui/ux">
+          <Link className="u-dot" to="/tags/ui/ux">
             ui/ux
           </Link>
         </p>
