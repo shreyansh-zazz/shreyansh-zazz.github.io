@@ -9,8 +9,11 @@ export default class Index extends React.Component {
   render() {
     var searchList = this.isSearching(this.props.location)
 
-    const posts = searchList.results || this.props.data.allStrapiBlock.edges
-
+    const posts =
+      searchList.results ||
+      this.props.data.allMarkdownRemark.edges ||
+      this.props.data.allStrapiBlock.edges
+    console.log(posts)
     return (
       <div>
         <SEO title="Root" pathname={this.props.location.pathname} />
@@ -20,7 +23,7 @@ export default class Index extends React.Component {
         })()}
         {posts.map((node, i) => {
           if (!searchList.results) node = node.node
-          return <Block key={node.slug} node={node} index={i}></Block>
+          return <Block key={node.fields.slug} node={node} index={i}></Block>
         })}
       </div>
     )
@@ -45,6 +48,25 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
+      edges {
+        node {
+          timeToRead
+          frontmatter {
+            date(formatString: "DD/MM/YYYY")
+            description
+            tags
+            title
+            category
+          }
+          fields {
+            slug
+          }
+          excerpt(format: PLAIN)
+          html
+        }
       }
     }
     allStrapiBlock(sort: { fields: [created_at], order: DESC }) {
