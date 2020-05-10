@@ -7,5 +7,4 @@ tags: ["space", "external"]
 ---
 
 Below is the video:
-
-https://youtu.be/UvmWxm3nR6E
+<iframe width="1903" height="768" src="https://www.youtube.com/embed/UvmWxm3nR6E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
