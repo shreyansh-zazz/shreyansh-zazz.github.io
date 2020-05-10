@@ -41,37 +41,41 @@ export default class Block extends React.Component {
             {this.node.title}
           </Link>
           <p className="desc"> {this.node.description || this.node.excerpt}</p>
-          <p className="meta">
-            <Link
-              className={"category " + this.getTypeColorClass()}
-              to={this.node.category}
-            >
-              {this.node.category}
-            </Link>
-            &nbsp;|&nbsp;
-            {this.node.timeToRead}min &nbsp;|&nbsp;
-            {this.node.date}
-            &nbsp;|&nbsp;
-            {this.node.tags?.map((name, i) => {
-              var linkTag = (
-                <span>
-                  ,&nbsp;
-                  <Link className="tag" to={"tags/" + name}>
-                    {name}
-                  </Link>
-                </span>
-              )
-              if (!i)
-                linkTag = (
+          <div className="meta">
+            <span>
+              <Link
+                className={"category " + this.getTypeColorClass()}
+                to={this.node.category}
+              >
+                {this.node.category}
+              </Link>
+              &nbsp;|&nbsp;
+              {this.node.timeToRead}min &nbsp;|&nbsp;
+              {this.node.date}
+              &nbsp;|&nbsp;
+            </span>
+            <span>
+              {this.node.tags?.map((name, i) => {
+                var linkTag = (
                   <span>
+                    ,&nbsp;
                     <Link className="tag" to={"tags/" + name}>
                       {name}
                     </Link>
                   </span>
                 )
-              return linkTag
-            })}
-          </p>
+                if (!i)
+                  linkTag = (
+                    <span>
+                      <Link className="tag" to={"tags/" + name}>
+                        {name}
+                      </Link>
+                    </span>
+                  )
+                return linkTag
+              })}
+            </span>
+          </div>
         </div>
       </div>
     )
