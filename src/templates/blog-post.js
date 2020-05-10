@@ -29,7 +29,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
       <ReactMarkdown
         className="section"
-        source={post.rawMarkdownBody}
+        source={post.html}
         escapeHtml={false}
       />
       <hr />

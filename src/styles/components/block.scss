@@ -72,7 +72,6 @@
 
   .section {
     margin: 0.8rem 0 1.2rem 0;
-    width: 100%;
 
     @media print {
       *,
@@ -206,6 +205,10 @@
     select,
     textarea {
       max-width: 100%;
+    }
+
+    iframe {
+      width: 520px;
     }
     
     /* === A bit of a gross hack so we can have bleeding divs/blockquotes. */

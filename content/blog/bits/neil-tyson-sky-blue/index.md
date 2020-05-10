@@ -8,4 +8,4 @@ tags: ["space", "external"]
 
 Below is the video:
 
-<iframe width="320" height="320" src="https://www.youtube.com/embed/UvmWxm3nR6E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://youtu.be/UvmWxm3nR6E
