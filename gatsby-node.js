@@ -41,14 +41,15 @@ exports.createPages = async ({ graphql, actions }) => {
                 name
               }
               updated_at
-              created_at(formatString: "MMMM DD, YYYY")
+              created_at(formatString: "DD/MM/YYYY")
               slug
             }
           }
         }
 
-        tagsGroup: allStrapiBlock(limit: 2000) {
-          group(field: tags___name) {
+        tagsGroup: allMarkdownRemark {
+          group(field: frontmatter___tags) {
+            totalCount
             fieldValue
           }
         }

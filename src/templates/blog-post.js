@@ -7,7 +7,11 @@ import Block from "../components/block"
 import colorVar from "../styles/__basics/vars"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = Object.assign(data.markdownRemark, data.markdownRemark.fields, data.markdownRemark.frontmatter)
+  const post = Object.assign(
+    data.markdownRemark,
+    data.markdownRemark.fields,
+    data.markdownRemark.frontmatter
+  )
   const { previous, next } = pageContext
   const cover = post.cover ? post.cover.childImageSharp.resize : null
 
@@ -59,7 +63,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(fields: {slug: {eq: $slug}}) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       excerpt
       fields {
         slug
@@ -69,7 +73,7 @@ export const pageQuery = graphql`
         title
         tags
         description
-        date
+        date(formatString: "HH:MM:SS DD MMMM, YYYY Z")
       }
       html
       rawMarkdownBody

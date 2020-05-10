@@ -8,7 +8,7 @@ import Block from "../components/block"
 
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext
-  const { edges, totalCount } = data.allStrapiBlock
+  const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? "" : "s"
   } tagged with "${tag}"`
@@ -23,7 +23,7 @@ const Tags = ({ pageContext, data, location }) => {
         <h1>{tagHeader}</h1>
       </div>
       {edges.map(({ node }, i) => {
-        return <Block key={node.slug} node={node} index={i} />
+        return <Block key={node.fields.slug} node={node} index={i} />
       })}
     </div>
   )
@@ -38,26 +38,29 @@ export const pageQuery = graphql`
         title
       }
     }
-    allStrapiBlock(
-      limit: 2000
-      sort: { fields: [created_at], order: DESC }
-      filter: { tags: { elemMatch: { name: { in: [$tag] } } } }
+    allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
-      totalCount
       edges {
         node {
-          title
-          description
-          content
-          category
-          tags {
-            name
+          frontmatter {
+            title
+            description
+            category
+            tags
+            date(formatString: "DD/MM/YYYY")
           }
-          updated_at
-          created_at(formatString: "DD/MM/YYYY")
-          slug
+          fields {
+            slug
+          }
+          timeToRead
+          html
+          rawMarkdownBody
+          excerpt
         }
       }
+      totalCount
     }
   }
 `

@@ -9,7 +9,7 @@ import colorVars from "../styles/__basics/vars.js"
 
 export default class Tags extends React.Component {
   render() {
-    const group = this.props.data.allStrapiBlock.group
+    const group = this.props.data.allMarkdownRemark.group
 
     return (
       <div>
@@ -56,10 +56,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allStrapiBlock(limit: 2000) {
-      group(field: tags___name) {
-        fieldValue
+    allMarkdownRemark {
+      group(field: frontmatter___tags) {
         totalCount
+        fieldValue
       }
     }
   }
