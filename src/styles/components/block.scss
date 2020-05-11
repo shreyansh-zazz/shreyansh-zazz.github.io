@@ -268,11 +268,6 @@
       line-height: 1.45;
     }
     
-    pre,
-    code {
-      font-family: Menlo, Monaco, "Courier New", monospace;
-    }
-    
     pre {
       background-color: #fafafa;
       font-size: .8rem;
@@ -283,6 +278,7 @@
     a,
     a:visited {
       color: #3498db;
+      text-decoration: underline dotted;
     }
     
     a:hover,
