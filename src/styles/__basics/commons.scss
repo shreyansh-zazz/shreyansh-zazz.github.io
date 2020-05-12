@@ -73,11 +73,3 @@ p {
 .u-dot {
   text-decoration: underline dotted;
 }
-
-code {
-  font-size: inherit;
-
-  &::after {
-    content: "";
-  }
-}

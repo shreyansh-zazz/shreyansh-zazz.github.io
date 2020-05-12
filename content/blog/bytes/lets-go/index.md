@@ -1,9 +1,10 @@
 ---
 title: Let's Go
-date: "2020-05-10T18:05:47.555Z"
+date: "2020-05-12T17:09:51.426Z"
 description: This byte is a series of blogs on Go Programming Language.
 category: bytes
 tags: ["go-lang", "tutorial", "personal"]
+isPulished: false
 ---
 
 # Go Facts check
