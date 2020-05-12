@@ -1,6 +1,5 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import ReactMarkdown from "react-markdown/with-html"
 
 import SEO from "../components/seo"
 import Block from "../components/block"
@@ -27,11 +26,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
       <Block key={post.slug} node={post}></Block>
 
-      <ReactMarkdown
+      <div
         className="section"
-        source={post.html}
-        escapeHtml={false}
-      />
+        dangerouslySetInnerHTML={{ __html: post.html }}
+      ></div>
+
       <hr />
       <nav className="footer-links">
         <div className="left">
