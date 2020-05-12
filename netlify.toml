@@ -1,0 +1,4 @@
+[[plugins]]
+  package = "netlify-plugin-checklinks"
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
