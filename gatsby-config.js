@@ -20,6 +20,12 @@ module.exports = {
               maxWidth: 590,
             },
           },
+          {
+            resolve: "gatsby-remark-code-titles",
+            options: {
+              className: "gatsby-remark-code-title",
+            },
+          },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
