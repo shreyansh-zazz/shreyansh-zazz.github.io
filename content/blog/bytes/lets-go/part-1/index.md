@@ -10,7 +10,7 @@ tocEnabled: true
 
 # Hello Go
 
-```go
+```go:title=main.go:title=main.go
 package main
 
 import (
@@ -48,7 +48,7 @@ In Go there are different ways to declare variables but each one have it's own m
 
 ## Variable declaration
 
-```go
+```go:title=main.go
 package main
 
 import (
@@ -107,7 +107,7 @@ func main() {
 
 ## Variables shadowing
 
-```go
+```go:title=main.go
 package main
 
 import (
@@ -132,7 +132,7 @@ func main() {
 
 So far we have seen in our last few program example that we are naming our variable with lowercase letter. Well there's good reason for that as described below in the program:
 
-```go
+```go:title=main.go
 package main
 
 import (
@@ -155,7 +155,7 @@ func main() {
 
 Go asks developers to declare a variable name in such a way that the length of the variable name defines the life of that variable. e.g.
 
-```go
+```go:title=main.go
 package main
 
 import (
@@ -166,5 +166,44 @@ func main() {
 	i := 0 // we can name a varible this short if the lifespan of this variable is very small e.g. if we are using a for loop and i is for counter
 	theURL := "https://golang.org" // this variable has a decent name since the lifespan will be more, also notice the acronym is in uppercase which is a good practice in Go since it is more readable
 	fmt.Printf("%v %v %v", Pi, configNumber, increament) // OUTPUT: 3.14 0 0
+}
+```
+
+## Variables type conversion
+
+Go doesn't allow implicit type conversion, it has to be explicit.
+
+```go:title=main.go
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+func main() {
+	var i int = 10 // here i is of type int
+	var j float32 = float32(i) // here we are converting i int to a float32 type
+	// to verify this we will print both values and types
+	fmt.Printf("%v %T\n%v %T", i, i, j, j)
+	// OUTPUT:
+	// 10 int
+	// 10 float32
+
+	// we can also convert float to int but that will result into data loss e.g. 10.5 will become 10 in int
+	// now lets try to convert an int into string
+	var integerValue int = 65
+	var stringValue string = string(integerValue) // here while converting Go will replace 65 with it's corresponding character in ASCII table i.e. A
+	fmt.Printf("%v %T\n%v %T", integerValue, integerValue, stringValue, stringValue)
+	// OUTPUT:
+	// 65 int
+	// A string
+
+	// to convert int directly to string we can using Go native package strconv which we have imported on top
+	var stringOriginalValue = strconv.Itoa(integerValue) // here Itoa means Integer to ASCII, and remember why I is capital in Itoa because it is exported from strconv package
+	fmt.Printf("%v %T\n%v %T", integerValue, integerValue, stringOriginalValue, stringOriginalValue)
+	// OUTPUT:
+	// 65 int
+	// 65 string
 }
 ```
