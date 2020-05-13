@@ -1,62 +1,12 @@
 ---
 title: Let's Go
-date: "2020-05-12T17:09:51.426Z"
-description: This byte is a series of blogs on Go Programming Language.
+date: "2020-05-13T16:48:19.867Z"
+description: This byte is a list of series of blogs on Go Programming Language.
 category: bytes
 tags: ["go-lang", "tutorial", "personal"]
 isPulished: false
 ---
 
-# Hello Go
+# Following is the list of `Let's Go` article
 
-```go:title=#001---main.go
-package main
-
-import (
-		"fmt"
-)
-
-func main() {
-	fmt.Println("Let's Go....")
-}
-```
-
-## Go Facts check
-
-- Go attempts to reduce the amount of typing, as in writing code for a feature or just the syntax which end up reducing clutter and complexity in codebase.
-- Go is compiled. There's no VM and after compilation it creates only one executable file without any dependencies, hence no dependency hell. Upload it anywhere and run, it will work like a charm (_did I mention that this exec file is cross-platform_?).
-- Go is 🐅 (_fast_) and 🔏 (_safe_). Strong and static typed, garbage collected and reliable to some extends. Go provides compile time safety and runtime safety to some extends only.
-- Go supports (kind of) OOP. Go has types and method but there's no type hierarchy (no type inheritance). Though Go does support interface which is very lightweight but the approach is different from OOP. In a nutshell it support an implicit style of type dependency.
-- Go wants you to compose things not inherit like in other OOP languages.
-- Go supports functional programming (FP). e.g., Go supports anonymous functions, closures, and first-class functions.
-- Go has built-in concurrency. There are no heavy threads but goroutines (later about this). Go removes all the complexity that comes while writing asynchronous code and provide a simple way to structure the programs in a more maintainable way.
-- Go is a simple to use super car which can take you to production from development in no time but safety is not guaranteed. If you're looking for safety take a look at [Rust](https://www.rust-lang.org/).
-
-To setup Go locally go to [this link](https://golang.org/) and follow instructions. Now let's jump in and see how we declare variables and stuff in Go.
-
-# Declare `var` not war
-
-In Go there are different ways to declare variables but each one have it's own meaning. In this section we will go through all the different types we can declare a variable and constants in go.
-
-## Variables fact check
-
-- Go is statically typed language, we know the type of a defined variable at compile time.
-- Go doesn't allow you to define unused variables, it will throw error at compile time. This feature helps in reducing clutter from the codebase,
-- Declaring variables in Go is pretty much different from declaring variables in C or Java. In C we specify the type of variable to the left of declaration e.g. `int a;` but in Go the types comes on right side of declaration `var a int`. The reason for that is that Go follows a different Declaration Syntax, more on that [here](https://blog.golang.org/declaration-syntax).
-- When we declare a variable in Go e.g. `var i int` the variable is initialized to the zero value of respective type.
-
-## Basic variables declaration
-
-```go:title=#002---main.go
-package main
-
-import (
-		"fmt"
-)
-
-var i int
-
-func main() {
-	fmt.Println(i)
-}
-```
+- [Part 1 - Variables in Go](/bytes/lets-go/part-1/)

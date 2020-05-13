@@ -10,6 +10,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -26,6 +27,7 @@ module.exports = {
               className: "gatsby-remark-code-title",
             },
           },
+          `gatsby-remark-autolink-headers`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
