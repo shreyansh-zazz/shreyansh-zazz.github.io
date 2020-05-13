@@ -12,7 +12,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     data.markdownRemark.frontmatter
   )
   const { previous, next } = pageContext
-  const cover = post.cover ? post.cover.childImageSharp.resize : null
+  const cover = post.coverURL ? post.coverURL.childImageSharp.resize : null
 
   return (
     <article className="block-detail">
@@ -84,6 +84,15 @@ export const pageQuery = graphql`
         description
         date(formatString: "HH:MM:SS DD MMMM, YYYY Z")
         tocEnabled
+        coverURL {
+          childImageSharp {
+            resize(width: 720) {
+              src
+              width
+              height
+            }
+          }
+        }
       }
       html
       rawMarkdownBody

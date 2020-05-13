@@ -5,6 +5,7 @@ description: This byte is a list of series of blogs on Go Programming Language.
 category: bytes
 tags: ["go-lang", "tutorial", "personal"]
 isPulished: false
+coverURL: "./lets-go.png"
 ---
 
 # Following is the list of `Let's Go` article
