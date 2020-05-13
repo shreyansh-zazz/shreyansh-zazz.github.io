@@ -26,6 +26,16 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
       <Block key={post.slug} node={post}></Block>
 
+      {post.tocEnabled ? (
+        post.tableOfContents ? (
+          <div className="section">
+            <h1>Table of content</h1>{" "}
+            <div
+              dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
+            ></div>
+          </div>
+        ) : null
+      ) : null}
       <div
         className="section"
         dangerouslySetInnerHTML={{ __html: post.html }}
@@ -73,10 +83,12 @@ export const pageQuery = graphql`
         tags
         description
         date(formatString: "HH:MM:SS DD MMMM, YYYY Z")
+        tocEnabled
       }
       html
       rawMarkdownBody
       timeToRead
+      tableOfContents
     }
   }
 `
