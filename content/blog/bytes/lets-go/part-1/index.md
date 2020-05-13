@@ -6,6 +6,7 @@ category: bytes
 tags: ["go-lang", "tutorial", "personal"]
 isPulished: true
 tocEnabled: true
+coverURL: "../lets-go.png"
 ---
 
 # Hello Go
