@@ -106,7 +106,8 @@ export default class Header extends React.Component {
                 <div className="connect-links">
                   <a
                     className="connect-link github"
-                    _target="_blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://github.com/shreyansh-zazz"
                   >
                     <FaGithub className="icon" />
@@ -114,7 +115,8 @@ export default class Header extends React.Component {
                   </a>
                   <a
                     className="connect-link dribbble"
-                    _target="_blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://github.com/shreyansh-zazz"
                   >
                     <FaDribbble className="icon" />
@@ -122,7 +124,8 @@ export default class Header extends React.Component {
                   </a>
                   <a
                     className="connect-link pinterest"
-                    _target="_blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://in.pinterest.com/shreyanshzazz/"
                   >
                     <FaPinterest className="icon" />
@@ -130,7 +133,8 @@ export default class Header extends React.Component {
                   </a>
                   <a
                     className="connect-link twitter"
-                    _target="_blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://twitter.com/shreyansh_zazz"
                   >
                     <FaTwitter className="icon" />
@@ -138,7 +142,8 @@ export default class Header extends React.Component {
                   </a>
                   <a
                     className="connect-link linkedin"
-                    _target="_blank"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://www.linkedin.com/in/shreyansh-zazz/"
                   >
                     <FaLinkedin className="icon" />
