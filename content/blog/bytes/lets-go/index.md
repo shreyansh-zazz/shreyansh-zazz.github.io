@@ -4,7 +4,7 @@ date: "2020-05-13T16:48:19.867Z"
 description: This byte is a list of series of blogs on Go Programming Language.
 category: bytes
 tags: ["go-lang", "tutorial", "personal"]
-isPulished: false
+isPulished: true
 coverURL: "./lets-go.png"
 ---
 
