@@ -126,6 +126,11 @@ const SEO = ({
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
       ></script>
+      <script
+        data-search-pseudo-elements
+        src="https://kit.fontawesome.com/0039a3dae6.js"
+        crossorigin="anonymous"
+      ></script>
     </Helmet>
   )
 }
