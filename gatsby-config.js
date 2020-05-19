@@ -16,6 +16,20 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: "gatsby-remark-custom-blocks",
+            options: {
+              blocks: {
+                danger: {
+                  classes: "danger",
+                },
+                info: {
+                  classes: "info",
+                  title: "optional",
+                },
+              },
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 590,
@@ -123,7 +137,7 @@ module.exports = {
             },
             query: `
               {
-                allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
+                allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC} filter: {frontmatter: {isPulished: {ne: false}}}) {
                   edges {
                     node {
                       frontmatter {

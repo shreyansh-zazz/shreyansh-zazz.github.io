@@ -38,7 +38,9 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { order: DESC, fields: frontmatter___date }
-      filter: { frontmatter: { category: { eq: "bits" } } }
+      filter: {
+        frontmatter: { category: { eq: "bits" }, isPulished: { ne: false } }
+      }
     ) {
       edges {
         node {
