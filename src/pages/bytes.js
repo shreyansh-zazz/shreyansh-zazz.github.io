@@ -37,7 +37,9 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { order: DESC, fields: frontmatter___date }
-      filter: { frontmatter: { category: { eq: "bytes" } } }
+      filter: {
+        frontmatter: { category: { eq: "bytes" }, isPulished: { ne: false } }
+      }
     ) {
       edges {
         node {

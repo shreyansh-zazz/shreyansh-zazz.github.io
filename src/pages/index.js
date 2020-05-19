@@ -46,7 +46,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: frontmatter___date }
+      filter: { frontmatter: { isPulished: { ne: false } } }
+    ) {
       edges {
         node {
           timeToRead

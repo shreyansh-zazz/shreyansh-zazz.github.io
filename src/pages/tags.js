@@ -20,11 +20,13 @@ export default class Tags extends React.Component {
         />
         <div className="tags">
           <h1>Tags</h1>
-          {group.map((tag) => (
-            <Link className="tag" to={`/tags/${tag.fieldValue}/`}>
-              {tag.fieldValue}({tag.totalCount})
-            </Link>
-          ))}
+          <div className="tags-container">
+            {group.map((tag) => (
+              <Link className="tag" to={`/tags/${tag.fieldValue}/`}>
+                {tag.fieldValue}({tag.totalCount})
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     )
@@ -56,7 +58,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark {
+    allMarkdownRemark(filter: { frontmatter: { isPulished: { ne: false } } }) {
       group(field: frontmatter___tags) {
         totalCount
         fieldValue
