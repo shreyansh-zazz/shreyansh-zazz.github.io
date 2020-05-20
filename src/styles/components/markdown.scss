@@ -968,7 +968,7 @@
   vertical-align: middle;
 }
 
-.gatsby-remark-code-title {
+.gatsby-code-header {
   background: #f5f2f0;
   color: #866c5b;
   font-weight: 500;
@@ -983,14 +983,21 @@
   z-index: 0;
   border-top-left-radius: 0.3em;
   border-top-right-radius: 0.3em;
+
+  a {
+    color: inherit;
+  }
 }
 
-.gatsby-highlight-code-line {
-  background-color: #feb;
-  display: block;
-  margin-right: -1em;
-  margin-left: -1em;
-  padding-right: 1em;
-  padding-left: 0.75em;
-  border-left: 0.25em solid #f99;
+.gatsby-code-header h5 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  // background-color: rgb(245, 242, 240);
+  // border-top-left-radius: 5px;
+  // border-top-right-radius: 5px;
+  // border-bottom: 1px solid gray;
 }

@@ -36,10 +36,7 @@ module.exports = {
             },
           },
           {
-            resolve: "gatsby-remark-code-titles",
-            options: {
-              className: "gatsby-remark-code-title",
-            },
+            resolve: `gatsby-remark-code-headers`,
           },
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-prismjs`,

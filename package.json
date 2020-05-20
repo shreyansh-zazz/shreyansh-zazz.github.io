@@ -22,7 +22,7 @@
     "gatsby-plugin-sharp": "^2.6.2",
     "gatsby-plugin-sitemap": "^2.4.2",
     "gatsby-remark-autolink-headers": "^2.3.1",
-    "gatsby-remark-code-titles": "^1.1.0",
+    "gatsby-remark-code-headers": "^1.1.0",
     "gatsby-remark-copy-linked-files": "^2.3.2",
     "gatsby-remark-custom-blocks": "^2.3.1",
     "gatsby-remark-images": "^3.3.2",
@@ -55,6 +55,7 @@
   },
   "scripts": {
     "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
+    "build.dev": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
