@@ -11,7 +11,8 @@ coverURL: "../lets-go.png"
 
 # Hello Go
 
-```go:title=main.go:title=main.go
+```go
+// Header: <span>main.go</span> <a target="_blank" href="https://codeeval.dev/gist/75f95939d1cda10a95703d44043451c3">Try online</a>
 package main
 
 import (
@@ -49,7 +50,8 @@ In Go there are different ways to declare variables but each one have it's own m
 
 ## Variable declaration
 
-```go:title=main.go
+```go
+// Header: <span>main.go</span> <a target="_blank" href="https://codeeval.dev/gist/91adfb498aa666cd393e7bffd00e23cf">Try online</a>
 package main
 
 import (
@@ -108,7 +110,8 @@ func main() {
 
 ## Variables shadowing
 
-```go:title=main.go
+```go
+// Header: <span>main.go</span> <a target="_blank" href="https://codeeval.dev/gist/89cd64a8f33b0438164b1b2ac907dd40">Try online</a>
 package main
 
 import (
@@ -133,7 +136,8 @@ func main() {
 
 So far we have seen in our last few program example that we are naming our variable with lowercase letter. Well there's good reason for that as described below in the program:
 
-```go:title=main.go
+```go
+// Header: <span>main.go</span> <a target="_blank" href="https://codeeval.dev/gist/c5b5d43c0e552cf0f1586f2fdf5fada4">Try online</a>
 package main
 
 import (
@@ -156,7 +160,8 @@ func main() {
 
 Go asks developers to declare a variable name in such a way that the length of the variable name defines the life of that variable. e.g.
 
-```go:title=main.go
+```go
+// Header: <span>main.go</span> <a target="_blank" href="https://codeeval.dev/gist/2c21e6510bc4597e9ebe1d23ebf40721">Try online</a>
 package main
 
 import (
@@ -166,7 +171,7 @@ import (
 func main() {
 	i := 0 // we can name a varible this short if the lifespan of this variable is very small e.g. if we are using a for loop and i is for counter
 	theURL := "https://golang.org" // this variable has a decent name since the lifespan will be more, also notice the acronym is in uppercase which is a good practice in Go since it is more readable
-	fmt.Printf("%v %v %v", Pi, configNumber, increament) // OUTPUT: 3.14 0 0
+	fmt.Printf("%v %v", i, theURL) // OUTPUT: 0 https://golang.org
 }
 ```
 
@@ -174,7 +179,8 @@ func main() {
 
 Go doesn't allow implicit type conversion, it has to be explicit.
 
-```go:title=main.go
+```go
+// Header: <span>main.go</span> <a target="_blank" href="https://codeeval.dev/gist/0b240b08ebb6222cc850d6d6fcbe4264">Try online</a>
 package main
 
 import (
