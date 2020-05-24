@@ -1,7 +1,7 @@
 ---
 title: Variables in Go - Let's Go - Part 1
-date: "2020-05-13T16:40:28.593Z"
-description: This byte is a series of blogs on Go Programming Language.
+date: "2020-05-24T22:03:26.188Z"
+description: In this byte I will be explaining variable declaration, and few important fact checks about Go
 category: bytes
 tags: ["go-lang", "tutorial", "personal"]
 isPulished: true
@@ -212,5 +212,39 @@ func main() {
 	// OUTPUT:
 	// 65 int
 	// 65 string
+}
+```
+
+## Variables type alias
+
+Originally type alias in Go was introduced to make it easier to refactor codebase, with the help of following example we can see how
+
+```go
+// Header: <span>main.go</span> <a target="_blank" href="https://codeeval.dev/gist/a3cc4a4a6e388c2e3585141227142f01">Try online</a>
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	// let's assume 'float32' is a type coming from xyz package that we're importing from somewhere
+	// now this xyz package exports 'float32' type that we can use here
+	// suppose if in future, inside xyz package, we want to rename the 'float32' type to say 'float64', this can cause a problem
+	// we then have to search for all the packages that are using 'float32' then replace each instances with 'float64'
+	// here type alias can help as follows
+	
+	type float = float32 // assume its xyz.Float32
+	// here we are using 'type' keyword to alias xyz.Float32 before using it anywhere in the package
+
+	var pi float = 3.14
+	fmt.Println(pi) // using Pie here in the package
+
+	// suppose we have renamed the xyz.Float32 to xyz.Float64 in the xyz package
+	// now here we can just change the xyz.Float32 to xyz.Float64 in the type alias and everything will still work the same
+	// type float = xyz.Float32 will become type float = xyz.Float64, and everything will work as expected in this package
+
+	// OUTPUT:
+	// 3.14
 }
 ```
