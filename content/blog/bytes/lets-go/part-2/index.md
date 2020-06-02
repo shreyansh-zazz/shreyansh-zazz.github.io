@@ -17,22 +17,22 @@ coverURL: "../lets-go.png"
 # Basic primitive types in Go
 
 - **Boolean** - zero value is `false`
-    - `bool`
+  - `bool`
 - **Integer** - zero value is `0`
-    - `int8`, `uint8`
-    - `byte` is an alias for `uint8`
-    - `int16`, `uint16`
-    - `int32`, `uint32`
-    - `rune` is an alias for `int32`
-    - `int64`, `uint64`
+  - `int8`, `uint8`
+  - `byte` is an alias for `uint8`
+  - `int16`, `uint16`
+  - `int32`, `uint32`
+  - `rune` is an alias for `int32`
+  - `int64`, `uint64`
 - **Floating point** - zero value is `0.0`
-    - `float32`
-    - `float64`
+  - `float32`
+  - `float64`
 - **Character** - zero value is `0`
-    - `byte` is a 1 byte value, an alias for `uint8` type
-    - `rune` is a 4 byte Unicode code-point, an alias for `int32` type
+  - `byte` is a 1 byte value, an alias for `uint8` type
+  - `rune` is a 4 byte Unicode code-point, an alias for `int32` type
 - **String** - zero value is `""` empty string
-    - `string` - String in Go is an immutable sequence of bytes (8-bit `byte` values)
+  - `string` - String in Go is an immutable sequence of bytes (8-bit `byte` values)
 - **Enum** - Go doesn't support enumerations, though there is a work around. We will learn more below.
 
 I am not doing much in below program, just showing the basic thing. I will leave it upto you to go crazy with these types, discover, and let me know on [twitter](https://twitter.com/shreyansh_zazz)
@@ -85,15 +85,15 @@ import (
 
 func main() {
 	// we can use const in all places where var can be used, package level, method level, etc.
-	
+
 	const pi float32 = 3.14 // typed constant - more on this later
 	// pi = 3.1 // if you uncomment this line an error will be thrown, since we're reassigning a constants which is not possible
 	fmt.Printf("%v ------- %T", pi, pi)
-	
+
 	// in terms of declaration const is similar to var
 	const area = "area 52" // untyped constant - more on this later
 	fmt.Printf("\n%v ------- %T", area, area)
-	
+
 	// we can also group constants just like we do in variables
 	const (
 		first = 1
@@ -104,9 +104,9 @@ func main() {
 	fmt.Printf("\n%v ------- %T", first, first)
 	fmt.Printf("\n%v ------- %T", second, second)
 	fmt.Printf("\n%v ------- %T\n", third, third)
-	
+
 	const longPi = math.Pi
-	
+
 	// we can perform operations on contants but can't change their values
 	fmt.Println(math.Sqrt(four))
 	fmt.Println(longPi)
@@ -137,11 +137,11 @@ import (
 
 func main() {
 	const one = 1 // untyped constant
-	
+
 	// no need to cast here
 	var whatIsOneDecimal float32 = one // here a type will be assign to one as float32 because it is getting assigned to a float32 variable
 	var whatIsOneInt int32 = one // here a type will be assign to one as int32 because it is getting assigned to a int32 variable
-	
+
 	fmt.Println(whatIsOneDecimal)
 	fmt.Println(whatIsOneInt)
 
@@ -164,7 +164,7 @@ import (
 )
 
 func main() {
-	
+
 	// iota helps us to declare a group of const having sequential values like 1, 2, 3, 4, etc.
 	const (
 		_ = iota // iota starts counting from 0 and we want from 1 so we have used a blank identifier to skip 0 value
@@ -178,7 +178,7 @@ func main() {
 	fmt.Println(two)
 	fmt.Println(three)
 	fmt.Println(four)
-	
+
 	const zero = iota // here iota resets to 0
 	fmt.Println(zero)
 
@@ -224,7 +224,7 @@ func main() {
 		four
 		five
 	)
-	
+
 	fmt.Println(zero)
 	fmt.Println(one)
 	fmt.Println(two)
