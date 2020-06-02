@@ -233,7 +233,7 @@ func main() {
 	// suppose if in future, inside xyz package, we want to rename the 'float32' type to say 'float64', this can cause a problem
 	// we then have to search for all the packages that are using 'float32' then replace each instances with 'float64'
 	// here type alias can help as follows
-	
+
 	type float = float32 // assume its xyz.Float32
 	// here we are using 'type' keyword to alias xyz.Float32 before using it anywhere in the package
 
