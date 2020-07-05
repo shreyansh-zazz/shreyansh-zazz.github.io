@@ -53,7 +53,7 @@ export default class About extends React.Component {
           Visit these links for more details: &nbsp;
           <a
             className="u-dot"
-            href="https://res.cloudinary.com/notesss/image/upload/v1588871519/Shreyansh_Kumar_Mehta_Resume_15-04-2020-13-20-57_055d9d2423.pdf"
+            href="https://res.cloudinary.com/notesss/image/upload/v1593021798/Shreyansh_Kumar_Mehta_Resume_12-06-2020-14-37-06_qgzgy4.pdf"
           >
             resume
           </a>
