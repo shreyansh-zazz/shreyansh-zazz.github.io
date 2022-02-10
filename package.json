@@ -33,7 +33,7 @@
     "gatsby-transformer-remark": "^2.8.14",
     "gatsby-transformer-sharp": "^2.5.4",
     "netlify-plugin-gatsby-cache": "^0.2.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "prismjs": "^1.20.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
